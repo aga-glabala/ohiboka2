@@ -1,0 +1,35 @@
+$column-width: 20px;
+
+preview_bracelet {
+  .bracelet__row {
+    display: inline-block;
+
+    node > div .node {
+      width: $column-width;
+      height: $column-width * 0.8;
+      border-radius: 50%;
+    }
+
+    .node-type-phantom {
+      display: none;
+    }
+
+  }
+
+  .standard {
+    .bracelet__row {
+      margin-right: -2px;
+
+      node > div .node {
+        margin-bottom: 4px;
+      }
+    }
+    .bracelet__row.odd {
+      padding-bottom: $column-width * 0.4 + 2px;
+    }
+  }
+
+  .text {
+
+  }
+}

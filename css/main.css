@@ -1,0 +1,425 @@
+@import url(../node_modules/bootstrap/dist/css/bootstrap.css);
+/* latin-ext */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Fira Sans"), local("FiraSans-Regular"), url(../assets/fonts/FiraSans.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; }
+*, input, select {
+  font-family: Fira Sans, sans; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto; }
+
+.hide {
+  display: none !important; }
+
+.text-justify {
+  text-align: justify !important; }
+
+.text-nowrap {
+  white-space: nowrap !important; }
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.text-xs-left {
+  text-align: left !important; }
+
+.text-xs-right {
+  text-align: right !important; }
+
+.text-xs-center {
+  text-align: center !important; }
+
+@media (min-width: 35.5em) {
+  .text-sm-left {
+    text-align: left !important; }
+
+  .text-sm-right {
+    text-align: right !important; }
+
+  .text-sm-center {
+    text-align: center !important; } }
+@media (min-width: 48em) {
+  .text-md-left {
+    text-align: left !important; }
+
+  .text-md-right {
+    text-align: right !important; }
+
+  .text-md-center {
+    text-align: center !important; } }
+@media (min-width: 64em) {
+  .text-lg-left {
+    text-align: left !important; }
+
+  .text-lg-right {
+    text-align: right !important; }
+
+  .text-lg-center {
+    text-align: center !important; } }
+@media (min-width: 80em) {
+  .text-xl-left {
+    text-align: left !important; }
+
+  .text-xl-right {
+    text-align: right !important; }
+
+  .text-xl-center {
+    text-align: center !important; } }
+.text-lowercase {
+  text-transform: lowercase !important; }
+
+.text-uppercase {
+  text-transform: uppercase !important; }
+
+.text-capitalize {
+  text-transform: capitalize !important; }
+
+.pure-g > div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.content-box {
+  padding: 1em; }
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.container::after {
+  content: "";
+  display: table;
+  clear: both; }
+
+@media (min-width: 35.5em) {
+  .container {
+    max-width: 576px; } }
+@media (min-width: 48em) {
+  .container {
+    max-width: 720px; } }
+@media (min-width: 64em) {
+  .container {
+    max-width: 940px; } }
+@media (min-width: 80em) {
+  .container {
+    max-width: 1140px; } }
+.container-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.container-fluid::after {
+  content: "";
+  display: table;
+  clear: both; }
+
+button {
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  background-color: transparent;
+  padding: 5px 10px; }
+
+bracelet, .bracelet {
+  margin: 0 10px;
+  display: block; }
+  bracelet .string, .bracelet .string {
+    width: 3px;
+    height: 30px;
+    margin-right: 30px;
+    margin-left: -2px;
+    float: left; }
+    bracelet .string:nth-child(even), .bracelet .string:nth-child(even) {
+      margin-right: 28px; }
+  bracelet .bracelet__row, .bracelet .bracelet__row {
+    height: 30px; }
+    bracelet .bracelet__row.odd, .bracelet .bracelet__row.odd {
+      margin-left: -30px; }
+  bracelet node, .bracelet node {
+    display: inline-block; }
+    bracelet node > div, .bracelet node > div {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: 0 30px 0 0;
+      position: relative; }
+      bracelet node > div .node, .bracelet node > div .node {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+        transition: background-color linear 0.3s; }
+      bracelet node > div .node .up-string, bracelet node > div .node .bottom-string, .bracelet node > div .node .up-string, .bracelet node > div .node .bottom-string {
+        display: inline-block;
+        content: "";
+        width: 15px;
+        height: 15px;
+        border-left: 3px solid white;
+        transition: transform linear 0.3s; }
+      bracelet node > div .left-up-string, bracelet node > div .left-bottom-string,
+      bracelet node > div .right-up-string, bracelet node > div .right-bottom-string, .bracelet node > div .left-up-string, .bracelet node > div .left-bottom-string,
+      .bracelet node > div .right-up-string, .bracelet node > div .right-bottom-string {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        width: 3px;
+        height: 70%;
+        transition: background-color linear 0.3s; }
+      bracelet node > div .left-up-string, bracelet node > div .right-bottom-string, .bracelet node > div .left-up-string, .bracelet node > div .right-bottom-string {
+        transform: rotate(-45deg); }
+      bracelet node > div .right-up-string, bracelet node > div .left-bottom-string, .bracelet node > div .right-up-string, .bracelet node > div .left-bottom-string {
+        transform: rotate(45deg); }
+      bracelet node > div .left-up-string, .bracelet node > div .left-up-string {
+        top: -5px;
+        left: 5px; }
+      bracelet node > div .left-bottom-string, .bracelet node > div .left-bottom-string {
+        top: 12px;
+        left: 5px; }
+      bracelet node > div .right-up-string, .bracelet node > div .right-up-string {
+        top: -5px;
+        left: auto;
+        right: 5px; }
+      bracelet node > div .right-bottom-string, .bracelet node > div .right-bottom-string {
+        left: auto;
+        top: 12px;
+        right: 5px; }
+    bracelet node div.node-type-phantom .left-up-string, bracelet node div.node-type-phantom .right-bottom-string, .bracelet node div.node-type-phantom .left-up-string, .bracelet node div.node-type-phantom .right-bottom-string {
+      transform: none; }
+    bracelet node div.node-type-phantom .right-up-string, bracelet node div.node-type-phantom .left-bottom-string, .bracelet node div.node-type-phantom .right-up-string, .bracelet node div.node-type-phantom .left-bottom-string {
+      transform: none; }
+    bracelet node div.node-type-phantom .left-up-string, .bracelet node div.node-type-phantom .left-up-string {
+      top: -5px;
+      left: 5px; }
+    bracelet node div.node-type-phantom .left-bottom-string, .bracelet node div.node-type-phantom .left-bottom-string {
+      top: 12px;
+      left: 5px; }
+    bracelet node div.node-type-phantom .right-up-string, .bracelet node div.node-type-phantom .right-up-string {
+      top: -5px;
+      left: auto;
+      right: 6px; }
+    bracelet node div.node-type-phantom .right-bottom-string, .bracelet node div.node-type-phantom .right-bottom-string {
+      left: auto;
+      top: 15px;
+      right: 2px; }
+    bracelet node div.node-type-phantom .left-up-string, bracelet node div.node-type-phantom .left-bottom-string, .bracelet node div.node-type-phantom .left-up-string, .bracelet node div.node-type-phantom .left-bottom-string {
+      top: 0px;
+      left: -1px;
+      height: 100%; }
+    bracelet node div.node-type-phantom .right-up-string, bracelet node div.node-type-phantom .right-bottom-string, .bracelet node div.node-type-phantom .right-up-string, .bracelet node div.node-type-phantom .right-bottom-string {
+      left: auto;
+      top: 0;
+      right: -1px;
+      height: 100%; }
+    bracelet node div.node-type-phantom .node .up-string, bracelet node div.node-type-phantom .node .bottom-string, .bracelet node div.node-type-phantom .node .up-string, .bracelet node div.node-type-phantom .node .bottom-string {
+      border: 0; }
+    bracelet node div.node-type-left-regular .node .up-string, .bracelet node div.node-type-left-regular .node .up-string {
+      transform: rotate(45deg) translate(16px, -7.5px); }
+    bracelet node div.node-type-left-regular .node .bottom-string, .bracelet node div.node-type-left-regular .node .bottom-string {
+      transform: rotate(45deg) translate(5px, -3px); }
+    bracelet node div.node-type-left-backward .node .up-string, .bracelet node div.node-type-left-backward .node .up-string {
+      transform: rotate(45deg) translate(16px, -7.5px); }
+    bracelet node div.node-type-left-backward .node .bottom-string, .bracelet node div.node-type-left-backward .node .bottom-string {
+      transform: rotate(-45deg) translate(17px, 7.5px); }
+    bracelet node div.node-type-right-regular .node .up-string, .bracelet node div.node-type-right-regular .node .up-string {
+      transform: rotate(-45deg) translate(6px, 3px); }
+    bracelet node div.node-type-right-regular .node .bottom-string, .bracelet node div.node-type-right-regular .node .bottom-string {
+      transform: rotate(-45deg) translate(17px, 7.5px); }
+    bracelet node div.node-type-right-backward .node .up-string, .bracelet node div.node-type-right-backward .node .up-string {
+      transform: rotate(-45deg) translate(6px, 3px); }
+    bracelet node div.node-type-right-backward .node .bottom-string, .bracelet node div.node-type-right-backward .node .bottom-string {
+      transform: rotate(45deg) translate(5px, -3px); }
+
+bracelet.text .bracelet__row, .bracelet.text .bracelet__row {
+  margin-bottom: 15px; }
+bracelet.text color-picker, .bracelet.text color-picker {
+  margin-right: 15.5px; }
+  bracelet.text color-picker:first-child, .bracelet.text color-picker:first-child {
+    margin-right: 11px;
+    margin-left: -8px; }
+.odd-first bracelet.text color-picker:first-child, .odd-first .bracelet.text color-picker:first-child {
+  margin-left: 33px; }
+bracelet.text node > div, .bracelet.text node > div {
+  margin: 0 15px 0 0; }
+  bracelet.text node > div .left-bottom-string, bracelet.text node > div .right-up-string, .bracelet.text node > div .left-bottom-string, .bracelet.text node > div .right-up-string {
+    left: 13.5px;
+    transform: none;
+    height: 100%; }
+  bracelet.text node > div .right-bottom-string, bracelet.text node > div .left-up-string, .bracelet.text node > div .right-bottom-string, .bracelet.text node > div .left-up-string {
+    top: 0;
+    left: 7.5px;
+    right: auto;
+    bottom: auto;
+    transform: rotate(90deg);
+    height: 100%; }
+  bracelet.text node > div .left-up-string, .bracelet.text node > div .left-up-string {
+    left: auto;
+    right: 0; }
+  bracelet.text node > div.node-type-horizontal .node .up-string, .bracelet.text node > div.node-type-horizontal .node .up-string {
+    transform: rotate(-90deg) translateX(13.5px);
+    height: 30px;
+    width: 30px; }
+  bracelet.text node > div.node-type-vertical .node .up-string, .bracelet.text node > div.node-type-vertical .node .up-string {
+    transform: translateX(13.5px);
+    height: 30px;
+    width: 30px; }
+  bracelet.text node > div .node .bottom-string, .bracelet.text node > div .node .bottom-string {
+    display: none; }
+  bracelet.text node > div.node-type-phantom, .bracelet.text node > div.node-type-phantom {
+    margin: 0; }
+    bracelet.text node > div.node-type-phantom .left-bottom-string, .bracelet.text node > div.node-type-phantom .left-bottom-string {
+      transform: rotate(-90deg) translate(-11px, 5px);
+      height: 7.5px; }
+    bracelet.text node > div.node-type-phantom .right-up-string, .bracelet.text node > div.node-type-phantom .right-up-string {
+      height: 27px;
+      transform: translateY(13.5px); }
+    bracelet.text node > div.node-type-phantom .right-bottom-string, .bracelet.text node > div.node-type-phantom .right-bottom-string {
+      transform: rotate(-90deg) translate(-11px, -7.5px);
+      height: 7.5px; }
+    bracelet.text node > div.node-type-phantom .left-up-string, .bracelet.text node > div.node-type-phantom .left-up-string {
+      height: 27px;
+      transform: translate(-21px, -10px); }
+bracelet.text .bracelet__row.odd, .bracelet.text .bracelet__row.odd {
+  margin-left: 0; }
+  bracelet.text .bracelet__row.odd node > div.node-type-phantom .right-up-string, .bracelet.text .bracelet__row.odd node > div.node-type-phantom .right-up-string {
+    transform: translateY(-10px); }
+  bracelet.text .bracelet__row.odd node > div.node-type-phantom .left-up-string, .bracelet.text .bracelet__row.odd node > div.node-type-phantom .left-up-string {
+    transform: translate(-21px, 13px); }
+bracelet.text .bracelet__row:first-of-type, .bracelet.text .bracelet__row:first-of-type {
+  margin-bottom: 0;
+  margin-left: 13.5px; }
+  bracelet.text .bracelet__row:first-of-type.odd, .bracelet.text .bracelet__row:first-of-type.odd {
+    margin-left: 43.5px; }
+    bracelet.text .bracelet__row:first-of-type.odd node:last-child > div, .bracelet.text .bracelet__row:first-of-type.odd node:last-child > div {
+      margin-left: -7.5px; }
+  bracelet.text .bracelet__row:first-of-type.odd node:first-child > div, .bracelet.text .bracelet__row:first-of-type.odd node:first-child > div {
+    margin-right: 15px; }
+  bracelet.text .bracelet__row:first-of-type node:first-child > div, .bracelet.text .bracelet__row:first-of-type node:first-child > div {
+    width: 30px; }
+  bracelet.text .bracelet__row:first-of-type node > div, .bracelet.text .bracelet__row:first-of-type node > div {
+    width: 45px; }
+  bracelet.text .bracelet__row:first-of-type node:first-child > div, .bracelet.text .bracelet__row:first-of-type node:first-child > div {
+    margin-right: 0; }
+  bracelet.text .bracelet__row:first-of-type .left-bottom-string, .bracelet.text .bracelet__row:first-of-type .left-bottom-string {
+    transform: none;
+    left: 0;
+    height: 100%; }
+  bracelet.text .bracelet__row:first-of-type .right-bottom-string, bracelet.text .bracelet__row:first-of-type .right-up-string, bracelet.text .bracelet__row:first-of-type .left-up-string, .bracelet.text .bracelet__row:first-of-type .right-bottom-string, .bracelet.text .bracelet__row:first-of-type .right-up-string, .bracelet.text .bracelet__row:first-of-type .left-up-string {
+    display: none; }
+
+preview_bracelet .bracelet__row {
+  display: inline-block; }
+  preview_bracelet .bracelet__row node > div .node {
+    width: 20px;
+    height: 16px;
+    border-radius: 50%; }
+  preview_bracelet .bracelet__row .node-type-phantom {
+    display: none; }
+preview_bracelet .standard .bracelet__row {
+  margin-right: -2px; }
+  preview_bracelet .standard .bracelet__row node > div .node {
+    margin-bottom: 4px; }
+preview_bracelet .standard .bracelet__row.odd {
+  padding-bottom: 10px; }
+
+.bracelet-show .color {
+  border-radius: 50%;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle; }
+
+color-picker {
+  position: relative; }
+  color-picker button {
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    width: 25px;
+    height: 25px; }
+  color-picker .palette {
+    position: absolute;
+    left: 0;
+    z-index: 4;
+    padding: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    width: 310px; }
+    color-picker .palette button {
+      margin-left: 5px; }
+
+header {
+  background: url("../assets/imgs/bg.png");
+  padding: 30px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75); }
+  header h1 {
+    background: url("../assets/imgs/ohiboka.png") no-repeat;
+    height: 111px;
+    margin: 0; }
+  header nav {
+    padding-top: 45px;
+    padding-bottom: 45px; }
+    header nav a {
+      padding: 10px;
+      margin-left: 10px;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none; }
+    header nav a:hover {
+      text-decoration: underline; }
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 20; }
+
+.modal {
+  width: 80%;
+  max-width: 500px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 15px 45px 15px 15px;
+  margin: 200px auto 0;
+  position: relative; }
+  .modal .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    opacity: 0.5;
+    border: 0; }
+    .modal .close:hover {
+      opacity: 0.75; }
+
+/*# sourceMappingURL=main.css.map */
