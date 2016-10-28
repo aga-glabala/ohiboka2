@@ -6,8 +6,6 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { AppComponent }   from './app.component';
 import { BraceletModule }   from './bracelet/bracelet.module';
-import { BraceletListComponent }   from './bracelet/list.bracelet.component';
-import { BraceletDetailComponent }   from './bracelet/detail.bracelet.component';
 import { EditorModule }   from './editor/editor.module';
 
 @NgModule({
@@ -20,13 +18,6 @@ import { EditorModule }   from './editor/editor.module';
         path: '',
         redirectTo: '/bracelets/list',
         pathMatch: 'full'
-      },{
-        path: 'bracelets/list',
-        component: BraceletListComponent
-      },
-      {
-        path: 'bracelet-detail',
-        component: BraceletDetailComponent
       }
     ])
   ],

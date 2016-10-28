@@ -12,10 +12,6 @@ export class BraceletComponent {
   @Input() bracelet;
   @Input() readonly;
 
-  colorChanged(color, index) {
-    this.bracelet.changeColor(index, color);
-  }
-
   submit() {
     this.bracelet.save();
   }

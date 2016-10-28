@@ -41,4 +41,8 @@ export class EditorBraceletComponent {
       }
     });
   }
+
+  colorChanged(color, index) {
+    this.bracelet.changeColor(index, color);
+  }
 }

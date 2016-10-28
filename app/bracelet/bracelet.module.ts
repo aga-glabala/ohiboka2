@@ -13,7 +13,16 @@ import { BraceletComponent } from './directives/bracelet.directive';
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule,
+    RouterModule.forRoot([
+      {
+        path: 'bracelets/list',
+        component: BraceletListComponent
+      },
+      {
+        path: 'bracelet/detail/:id',
+        component: BraceletDetailComponent
+      }
+    ]),
     HttpModule
   ],
   declarations: [

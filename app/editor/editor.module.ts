@@ -11,10 +11,10 @@ import { NewSimpleBraceletComponent }   from './simple.new.component';
 import { NewZigzakBraceletComponent }   from './zigzak.new.component';
 import { NewTextGeneratorBraceletComponent }   from './text-generator.new.component';
 import { NewTextBraceletComponent }   from './text.new.component';
-
-import {EditorBraceletComponent} from './directives/editor-bracelet.component';
-import {ColorPickerComponent} from './directives/color-picker.component';
-import {BraceletService} from '../bracelet/bracelet.service';
+import { EditBraceletComponent }   from './edit.bracelet.component';
+import { EditorBraceletComponent } from './directives/editor-bracelet.component';
+import { ColorPickerComponent } from './directives/color-picker.component';
+import { BraceletService } from '../bracelet/bracelet.service';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import {BraceletService} from '../bracelet/bracelet.service';
       { path: 'bracelet/new/zigzak',  component: NewZigzakBraceletComponent },
       { path: 'bracelet/new/generator',  component: NewTextGeneratorBraceletComponent },
       { path: 'bracelet/new/text',  component: NewTextBraceletComponent },
-      //{ path: 'bracelet/:id',  component: NewTextBraceletComponent },
+      { path: 'bracelet/edit/:id',  component: EditBraceletComponent },
     ]),
     HttpModule,
     FormsModule,
@@ -39,7 +39,8 @@ import {BraceletService} from '../bracelet/bracelet.service';
     NewSimpleBraceletComponent,
     NewZigzakBraceletComponent,
     NewTextGeneratorBraceletComponent,
-    NewTextBraceletComponent
+    NewTextBraceletComponent,
+    EditBraceletComponent
   ],
   providers: [
     BraceletService
