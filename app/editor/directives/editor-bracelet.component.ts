@@ -17,7 +17,7 @@ import {BraceletService} from '../../bracelet/bracelet.service';
   </div>
   <div class="bracelet" [ngClass]="{'text': bracelet.type=='text'}">
     <div *ngFor="let row of bracelet.rows" class="bracelet__row" [ngClass]="{'odd': row.odd}">
-      <node *ngFor="let node of row.knots" [node]="node" [readonly]="readonly"></node>
+      <node *ngFor="let node of row.knots" [node]="node" [readonly]="false"></node>
     </div>
   </div>
 
