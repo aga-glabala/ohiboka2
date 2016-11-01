@@ -4,10 +4,10 @@ import {BraceletInterface} from './bracelet.interface';
 
 export class Bracelet implements BraceletInterface {
     name: string;
-    type: string;
     rows: StandardRow[];
     strings: string[];
     id: string;
+    public: boolean;
 
     constructor(braceletInfo:any) {
         this.name = braceletInfo.name;
@@ -363,6 +363,8 @@ export class Bracelet implements BraceletInterface {
         _id: this.id,
         strings: this.strings,
         type: "standard",
+        name: this.name,
+        public: this.public ? true : false,
         rows: []
       };
 
@@ -388,5 +390,9 @@ export class Bracelet implements BraceletInterface {
 
     public getStringsNumber() : number {
       return this.strings.length;
+    }
+
+    isTextType() : boolean {
+      return false;
     }
   }

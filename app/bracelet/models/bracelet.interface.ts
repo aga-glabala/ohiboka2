@@ -2,6 +2,7 @@ import {Row} from './row.model';
 
 export interface BraceletInterface {
   name: string;
+  public: boolean;
   rows: Row[];
   strings: string[];
   id: string;
@@ -19,4 +20,5 @@ export interface BraceletInterface {
   getStringsNumber(): number;
 
   toJson(): {};
+  isTextType(): {};
 }

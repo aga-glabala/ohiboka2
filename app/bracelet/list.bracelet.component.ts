@@ -5,14 +5,15 @@ import {BraceletInterface} from './models/bracelet.interface';
 
 @Component({
   selector: 'bracelet-list',
-  template: `<h1>Lista</h1>
+  template: `<h1>Najnowsze</h1>
   <div class="row">
     <div class="col-xs-1 col-md-6 col-lg-4" *ngFor="let bracelet of bracelets">
       <div class="card card-block">
-        <preview_bracelet [bracelet]="bracelet" [readonly]="true"></preview_bracelet>
-        <h4 class="card-title">TODO name</h4>
-        <a class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
-        <a class="card-link" [routerLink]="['/bracelet/detail', bracelet.id]">Show</a>
+        <a class="card-link" [routerLink]="['/bracelet/detail', bracelet.id]">
+          <preview_bracelet class="vertical" [bracelet]="bracelet" [readonly]="true"></preview_bracelet>
+          <h4 class="card-title">{{bracelet.name}}</h4>
+          <a class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
+        </a>
       </div>
     </div>
   </div>`

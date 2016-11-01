@@ -5,10 +5,10 @@ import {BraceletInterface} from './bracelet.interface';
 export class TextBracelet implements BraceletInterface {
     type: string;
     name: string;
+    public: boolean;
     rows: TextRow[];
     strings: string[];
     id: string;
-    private edited: boolean = false;
 
     constructor(braceletInfo:any) {
       this.name = braceletInfo.name;
@@ -280,7 +280,9 @@ export class TextBracelet implements BraceletInterface {
         _id: this.id,
         strings: this.strings,
         rows: [],
-        type: "text"
+        type: "text",
+        name: this.name,
+        public: this.public ? true : false
       };
 
       for(var i=1; i < this.rows.length; i++) {
@@ -307,11 +309,7 @@ export class TextBracelet implements BraceletInterface {
       return this.strings.length;
     }
 
-    public setSaved() {
-      this.edited = false;
-    }
-
-    public isEdited() {
-      return this.edited;
+    isTextType() : boolean {
+      return true;
     }
 }

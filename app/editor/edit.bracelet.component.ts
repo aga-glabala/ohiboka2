@@ -3,14 +3,14 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {BraceletService} from '../bracelet/bracelet.service';
 
 @Component({
-  template: `<editor-bracelet [bracelet]="bracelet"></editor-bracelet>
+  template: `<editor-bracelet *ngIf="bracelet" [bracelet]="bracelet"></editor-bracelet>
   `
 })
 
 export class EditBraceletComponent implements OnInit, OnDestroy {
   id: string;
   private sub: any;
-  bracelet = {rows: []};
+  bracelet;
 
   constructor(public BraceletService:BraceletService, private route: ActivatedRoute) {}
 

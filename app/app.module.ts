@@ -7,12 +7,14 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { AppComponent }   from './app.component';
 import { BraceletModule }   from './bracelet/bracelet.module';
 import { EditorModule }   from './editor/editor.module';
+import { UsersModule }   from './users/users.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     BraceletModule,
     EditorModule,
+    UsersModule,
     RouterModule.forRoot([
       {
         path: '',

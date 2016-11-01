@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthService } from './users/auth.service';
+declare const FB:any;
 @Component({
   selector: 'my-app',
   template: `
@@ -9,6 +11,8 @@ import { Component } from '@angular/core';
         <nav class="col-md-7 text-md-right">
           <a [routerLink]="['/bracelet/new']">New bracelet</a>
           <a [routerLink]="['/bracelets/list']">Bracelets</a>
+          <a *ngIf="!userLogged" [routerLink]="['/user/login']">Zaloguj się</a>
+          <a *ngIf="userLogged" (click)="logout()">Wyloguj się</a>
         </nav>
       </div>
     </div>
@@ -17,4 +21,34 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   </div>`
 })
-export class AppComponent { }
+export class AppComponent implements OnInit, OnDestroy {
+  userLogged;
+  private sub: any;
+  constructor(public AuthService : AuthService) {
+  }
+
+  logout() {
+    FB.logout();
+    this.AuthService.logout();
+  }
+
+  ngOnInit() {
+    FB.init({
+        appId      : '371302376535518',
+        cookie     : true,  // enable cookies to allow the server to access
+                            // the session
+        status     : true,
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v2.5' // use graph api version 2.5
+    });
+    this.AuthService.isLoggedUser();
+
+    this.sub = this.AuthService.getUser().subscribe(user => {
+       this.userLogged = user;
+     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+}

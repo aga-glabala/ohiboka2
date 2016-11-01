@@ -19,6 +19,10 @@ export class BraceletService {
     }
   }
 
+  getEmptyBracelet() {
+    return new Bracelet({rows:[], strings: [], type: 'standard'});
+  }
+
   createFromArray(braceletArray : any[]) {
     return braceletArray.map(BraceletService.create);
   }
