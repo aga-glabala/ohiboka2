@@ -8,6 +8,7 @@ export class Bracelet implements BraceletInterface {
     strings: string[];
     id: string;
     public: boolean;
+    type: string;
 
     constructor(braceletInfo:any) {
         this.name = braceletInfo.name;

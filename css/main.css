@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Proza+Libre&amp;subset=latin-ext");
 @import url(../node_modules/bootstrap/dist/css/bootstrap.css);
 /* latin-ext */
 @font-face {
@@ -7,7 +8,10 @@
   src: local("Fira Sans"), local("FiraSans-Regular"), url(../assets/fonts/FiraSans.woff2) format("woff2");
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; }
 *, input, select {
-  font-family: Fira Sans, sans; }
+  font-family: "Open Sans", sans; }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Proza Libre", sans-serif; }
 
 .sr-only {
   position: absolute;
@@ -334,6 +338,8 @@ bracelet.text .bracelet__row:first-of-type, .bracelet.text .bracelet__row:first-
   bracelet.text .bracelet__row:first-of-type .right-bottom-string, bracelet.text .bracelet__row:first-of-type .right-up-string, bracelet.text .bracelet__row:first-of-type .left-up-string, .bracelet.text .bracelet__row:first-of-type .right-bottom-string, .bracelet.text .bracelet__row:first-of-type .right-up-string, .bracelet.text .bracelet__row:first-of-type .left-up-string {
     display: none; }
 
+preview_bracelet .preview-container {
+  white-space: nowrap; }
 preview_bracelet .bracelet__row {
   display: inline-block; }
   preview_bracelet .bracelet__row node > div .node {
@@ -395,5 +401,35 @@ header {
       text-decoration: none; }
     header nav a:hover {
       text-decoration: underline; }
+
+bracelet-list .card {
+  @card ();
+  margin-bottom: 15px;
+  height: 200px; }
+  bracelet-list .card:hover {
+    box-shadow: 2px 2px 8px #e7e7e7;
+    border: 1px solid #d8d8d8; }
+    bracelet-list .card:hover .card-title {
+      font-weight: bold;
+      text-decoration: none; }
+  bracelet-list .card a:hover {
+    font-weight: bold;
+    text-decoration: none; }
+  bracelet-list .card preview_bracelet {
+    height: 150px;
+    display: block;
+    position: relative;
+    overflow: hidden; }
+  bracelet-list .card .preview-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  bracelet-list .card .card-title {
+    color: #555;
+    margin: 0; }
+
+bracelet-detail .details {
+  @card (); }
 
 /*# sourceMappingURL=main.css.map */

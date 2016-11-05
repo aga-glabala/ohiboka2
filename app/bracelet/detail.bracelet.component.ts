@@ -5,10 +5,17 @@ import {BraceletInterface} from '../bracelet/models/bracelet.interface';
 
 @Component({
   selector: 'bracelet-detail',
-  template: `<h3>Bransoletka</h3>
-  <div *ngIf="bracelet">
-  <preview_bracelet [bracelet]="bracelet"></preview_bracelet>
-  <bracelet [bracelet]="bracelet" [ngClass]="{'text': bracelet.isTextType()}"></bracelet>
+  template: `<div *ngIf="bracelet">
+    <h2>{{ bracelet.name }}</h2>
+    <div class="row">
+      <div class="col-md-8">
+        <preview_bracelet [bracelet]="bracelet"></preview_bracelet>
+        <bracelet [bracelet]="bracelet" [ngClass]="{'text': bracelet.isTextType()}"></bracelet>
+      </div>
+      <div class="col-md-4 details">
+        <h3>Szczegóły</h3>
+      </div>
+    </div>
   </div>`
 })
 export class BraceletDetailComponent implements OnInit, OnDestroy {

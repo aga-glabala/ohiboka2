@@ -1,6 +1,10 @@
 $column-width: 20px;
 
 preview_bracelet {
+  .preview-container {
+    white-space: nowrap;
+  }
+
   .bracelet__row {
     display: inline-block;
 

@@ -19,3 +19,10 @@
     clip: auto;
   }
 }
+
+@mixin card {
+  border: 1px solid $gray;
+  box-shadow: 2px 2px 3px #ededed;
+  border-radius: $borderRadius;
+  padding: 10px;
+}

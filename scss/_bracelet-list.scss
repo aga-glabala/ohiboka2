@@ -1,0 +1,42 @@
+bracelet-list {
+  .card {
+    @card();
+    margin-bottom: 15px;
+    height: 200px;
+
+    &:hover {
+      box-shadow: 2px 2px 8px darken(#ededed, 2.5);
+      border: 1px solid darken($gray, 2.5);
+
+      .card-title {
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+
+    a:hover {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    preview_bracelet {
+      height: 150px;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .card-title {
+      color: $baseColor;
+      margin: 0;
+    }
+
+  }
+}

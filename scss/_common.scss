@@ -1,6 +1,11 @@
 *, input, select {
-  font-family: Fira Sans, sans;
+  font-family: $baseFont;
 }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $headingFont;
+}
+
 .sr-only {@include sr-only;}
 .sr-only-focusable  {@include sr-only-focusable ;}
 .hide {display: none!important};

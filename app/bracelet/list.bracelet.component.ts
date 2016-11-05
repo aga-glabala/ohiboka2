@@ -12,7 +12,7 @@ import {BraceletInterface} from './models/bracelet.interface';
         <a class="card-link" [routerLink]="['/bracelet/detail', bracelet.id]">
           <preview_bracelet class="vertical" [bracelet]="bracelet" [readonly]="true"></preview_bracelet>
           <h4 class="card-title">{{bracelet.name}}</h4>
-          <a class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
+          <!--<a class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>-->
         </a>
       </div>
     </div>

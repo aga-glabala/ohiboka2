@@ -20,8 +20,8 @@ export class AuthService {
     this.loggedUser.next(user);
   }
 
-  public loginFB(id, name : string, email : string) {
-    this.loggedUser.next(new User(name, email));
+  public loginFB(response) {
+    this.loggedUser.next(new User(response.name, response.email));
   }
 
   public logout() {
@@ -43,7 +43,7 @@ export class AuthService {
 
       if (response.status === 'connected') {
         FB.api('/me?fields=email,name', function(resp) {
-          that.loginFB(resp.id, resp.name, resp.email)
+          that.loginFB(resp)
         });
         // connect here with your server for facebook login by passing access token given by facebook
       } else if (response.status === 'not_authorized') {
