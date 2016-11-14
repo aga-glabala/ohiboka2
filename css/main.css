@@ -403,7 +403,10 @@ header {
       text-decoration: underline; }
 
 bracelet-list .card {
-  @card ();
+  border: 1px solid #dedede;
+  box-shadow: 2px 2px 3px #ededed;
+  border-radius: 3px;
+  padding: 10px;
   margin-bottom: 15px;
   height: 200px; }
   bracelet-list .card:hover {
@@ -430,6 +433,30 @@ bracelet-list .card {
     margin: 0; }
 
 bracelet-detail .details {
-  @card (); }
+  border: 1px solid #dedede;
+  box-shadow: 2px 2px 3px #ededed;
+  border-radius: 3px;
+  padding: 10px; }
+bracelet-detail .author {
+  border: 1px solid #dedede;
+  box-shadow: 2px 2px 3px #ededed;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 15px; }
+  bracelet-detail .author a {
+    color: #555; }
+  bracelet-detail .author:hover {
+    text-decoration: underline; }
+  bracelet-detail .author .icon span {
+    font-size: 40px;
+    padding: 20px;
+    display: inline-block;
+    background-color: rgba(85, 85, 85, 0.25);
+    border-radius: 50%; }
+  bracelet-detail .author .username-container p {
+    margin: 10px 0; }
+  bracelet-detail .author .username-container .username {
+    font-size: 120%;
+    font-weight: bold; }
 
 /*# sourceMappingURL=main.css.map */

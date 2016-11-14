@@ -1,6 +1,6 @@
 bracelet-list {
   .card {
-    @card();
+    @include card();
     margin-bottom: 15px;
     height: 200px;
 

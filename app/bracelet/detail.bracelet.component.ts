@@ -12,8 +12,20 @@ import {BraceletInterface} from '../bracelet/models/bracelet.interface';
         <preview_bracelet [bracelet]="bracelet"></preview_bracelet>
         <bracelet [bracelet]="bracelet" [ngClass]="{'text': bracelet.isTextType()}"></bracelet>
       </div>
+      <div class="col-md-4 author">
+        <div class="row"><a href="#todo">
+          <div class="col-md-4 icon"><span class="glyphicon glyphicon-user"></span></div>
+          <div class="col-md-8 username-container">
+            <p class="username">User name</p>
+            <p>Zobacz wszystkie bransoletki tego autora</p>
+          </div>
+        </a></div>
+      </div>
       <div class="col-md-4 details">
         <h3>Szczegóły</h3>
+        <div>Liczba nitek: <strong>{{ bracelet.getStringsNumber() }}</strong></div>
+        <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
+        <div>Data dodania: <strong>todo</strong></div>
       </div>
     </div>
   </div>`

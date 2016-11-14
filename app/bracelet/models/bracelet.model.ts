@@ -393,6 +393,10 @@ export class Bracelet implements BraceletInterface {
       return this.strings.length;
     }
 
+    public getColorsNumber() : number {
+      return this.getColors().length;
+    }
+
     isTextType() : boolean {
       return false;
     }

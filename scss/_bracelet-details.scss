@@ -1,5 +1,35 @@
 bracelet-detail {
   .details {
-    @card();
+    @include card();
+  }
+  .author {
+    @include card();
+    margin-bottom: 15px;
+
+    a {
+      color: $baseColor;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .icon span {
+      font-size: 40px;
+      padding: 20px;
+      display: inline-block;
+      background-color: transparentize($baseColor, 0.75);
+      border-radius: 50%;
+    }
+
+    .username-container {
+      p {
+        margin: 10px 0;
+      }
+
+      .username {
+        font-size: 120%;
+        font-weight: bold;
+      }
+    }
   }
 }
