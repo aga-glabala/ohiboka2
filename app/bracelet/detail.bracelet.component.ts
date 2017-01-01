@@ -1,7 +1,8 @@
-import {Component, Inject, OnInit, OnDestroy} from '@angular/core';
+import {Component, Inject, OnInit, OnDestroy, AfterContentInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {BraceletService} from '../bracelet/bracelet.service';
 import {BraceletInterface} from '../bracelet/models/bracelet.interface';
+declare const DISQUS:any;
 
 @Component({
   selector: 'bracelet-detail',
@@ -26,6 +27,9 @@ import {BraceletInterface} from '../bracelet/models/bracelet.interface';
         <div>Liczba nitek: <strong>{{ bracelet.getStringsNumber() }}</strong></div>
         <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
         <div>Data dodania: <strong>todo</strong></div>
+      </div>
+      <div class="col-xs-12">
+        <disqus id="disqus_thread"></disqus>
       </div>
     </div>
   </div>`

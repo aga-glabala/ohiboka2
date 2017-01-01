@@ -9,7 +9,7 @@ import { BraceletService }   from './bracelet.service';
 import { NodeComponent } from './directives/node.directive';
 import { PreviewBraceletComponent }   from './directives/preview.bracelet.directive';
 import { BraceletComponent } from './directives/bracelet.directive';
-
+import { DisqusComponent } from './directives/disqus.directive';
 @NgModule({
   imports: [
     BrowserModule,
@@ -30,6 +30,7 @@ import { BraceletComponent } from './directives/bracelet.directive';
     BraceletDetailComponent,
     BraceletComponent,
     PreviewBraceletComponent,
+    DisqusComponent,
     NodeComponent
   ],
   exports: [

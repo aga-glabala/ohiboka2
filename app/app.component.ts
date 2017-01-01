@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from './users/auth.service';
 declare const FB:any;
 @Component({
@@ -21,7 +21,7 @@ declare const FB:any;
     <router-outlet></router-outlet>
   </div>`
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   userLogged;
   private sub: any;
   constructor(public AuthService : AuthService) {
@@ -41,11 +41,23 @@ export class AppComponent implements OnInit, OnDestroy {
         xfbml      : true,  // parse social plugins on this page
         version    : 'v2.5' // use graph api version 2.5
     });
+
+
+
     this.AuthService.isLoggedUser();
 
     this.sub = this.AuthService.getUser().subscribe(user => {
        this.userLogged = user;
      });
+     (function() { // DON'T EDIT BELOW THIS LINE
+     var d = document, s = d.createElement('script');
+     s.src = '//ohiboka.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', (+new Date()) + '');
+     (d.head || d.body).appendChild(s);
+     })();
+  }
+
+  ngAfterViewInit() {
   }
 
   ngOnDestroy() {
