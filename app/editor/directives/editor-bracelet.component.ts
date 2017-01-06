@@ -33,7 +33,7 @@ import {BraceletService} from '../../bracelet/bracelet.service';
     </div>
     <div class="form-group">
       <label for="public">Czy bransoletka ma być publiczna?</label>
-      <input type="checkbox" [(ngModel)]="bracelet.public" name="public" class="checkbox" id="public" required>
+      <input type="checkbox" [(ngModel)]="bracelet.public" name="public" class="checkbox" id="public">
     </div>
 
     <div><button (click)="saveBracelet()">Zapisz</button></div>

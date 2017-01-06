@@ -1,20 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 declare const DISQUS:any;
 @Component({
   selector: 'disqus',
-  template: `lalala`
+  template: ``
 })
 export class DisqusComponent implements OnInit {
-
+  @Input() braceletId;
+  @Input() braceletName;
 
   ngOnInit() {
-     DISQUS.reset({
-            reload: true,
-            config: function () {
-                this.page.identifier = "bracelet" + this.bracelet.id;
-                this.page.url = "http://"+window.location.hostname+":"+window.location.port+"/"+window.location.pathname;;
-                this.page.title = "newTitle";
-            }
-        });
+    let braceletId = this.braceletId;
+    let braceletName = this.braceletName;
+    DISQUS.reset({
+        reload: true,
+        config: function () {
+          this.page.identifier = "bracelet" + braceletId;
+          this.page.url = "http://"+window.location.hostname+":"+window.location.port+"/"+window.location.pathname;
+          this.page.title = braceletName;
+        }
+    });
   }
 }

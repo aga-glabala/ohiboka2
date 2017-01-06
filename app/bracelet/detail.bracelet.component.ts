@@ -2,7 +2,7 @@ import {Component, Inject, OnInit, OnDestroy, AfterContentInit} from '@angular/c
 import {Router, ActivatedRoute} from '@angular/router';
 import {BraceletService} from '../bracelet/bracelet.service';
 import {BraceletInterface} from '../bracelet/models/bracelet.interface';
-declare const DISQUS:any;
+declare const DISQUSWIDGETS:any;
 
 @Component({
   selector: 'bracelet-detail',
@@ -27,9 +27,10 @@ declare const DISQUS:any;
         <div>Liczba nitek: <strong>{{ bracelet.getStringsNumber() }}</strong></div>
         <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
         <div>Data dodania: <strong>todo</strong></div>
+        <div>Komentarzy: <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id"></span></div>
       </div>
       <div class="col-xs-12">
-        <disqus id="disqus_thread"></disqus>
+        <disqus id="disqus_thread" braceletName="{{bracelet.name}}" braceletId="{{bracelet.id}}"></disqus>
       </div>
     </div>
   </div>`
@@ -38,6 +39,7 @@ export class BraceletDetailComponent implements OnInit, OnDestroy {
   id: string;
   private sub: any;
   bracelet : BraceletInterface;
+  commentsLoaded : boolean = false;
 
   constructor(public BraceletService:BraceletService, private route: ActivatedRoute) {
 
@@ -53,5 +55,12 @@ export class BraceletDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  ngAfterViewChecked() {
+    if(document.getElementsByClassName('disqus-comment-count').length > 0 && !this.commentsLoaded) {
+      DISQUSWIDGETS.getCount({reset: true});
+      this.commentsLoaded = true;
+    }
   }
 }
