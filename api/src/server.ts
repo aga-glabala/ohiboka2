@@ -2,6 +2,8 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
 
+import { BraceletService }  from './bracelet/bracelet.service';
+
 var app = express();
 var port = process.env.PORT || 8080;        // set our port
 
@@ -24,8 +26,6 @@ db.once('open', function() {
   console.log('Database connected');
 });
 
-var Bracelet = require('./models/bracelet');
-
 // ROUTES FOR OUR API
 // =============================================================================
 
@@ -33,81 +33,19 @@ var router = express.Router();              // get an instance of the express Ro
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-  res.json({ message: 'hooray! welcome to our api!' });
+  res.json({ message: 'hello!' });
 });
 
-// more routes for our API will happen here
-// on routes that end in /bears
-// ----------------------------------------------------
+var braceletService = new BraceletService();
+
 router.route('/bracelets')
+  .post(braceletService.create)
+  .get(braceletService.all);
 
-// create a bear (accessed at POST http://localhost:8080/api/bears)
-.post(function(req, res) {
-
-  var bracelet = new Bracelet();      // create a new instance of the Bear model
-
-  bracelet.name = req.body.name;  // set the bears name (comes from the request)
-  bracelet.strings = req.body.strings;
-  bracelet.type = req.body.type;
-  bracelet.public = req.body.public;
-  bracelet.rows = req.body.rows;
-  bracelet.save(function(err) {
-    if (err)
-    res.send(err);
-
-    res.json({ status: 1, _id: bracelet._id });
-  })
-})
-.get(function(req, res) {
-  Bracelet.find(function(err, bracelets) {
-    if (err)
-    res.send(err);
-
-    res.json(bracelets);
-  });
-});
 router.route('/bracelets/:bracelet_id')
-.get(function(req, res) {
-
-  Bracelet.findOne({_id: req.params.bracelet_id}, function(err, bracelet) {
-    if (err)
-    res.send(err);
-    res.json(bracelet);
-  });
-})
-.put(function(req, res) {
-
-  // use our bear model to find the bear we want
-  Bracelet.findById(req.params.bracelet_id, function(err, bracelet) {
-
-      if (err) {
-          res.send(err);
-      }
-      bracelet.name = req.body.name;  // set the bears name (comes from the request)
-      bracelet.strings = req.body.strings;
-      bracelet.type = req.body.type;
-      bracelet.public = req.body.public;
-      bracelet.rows = req.body.rows;
-
-      // save the bear
-      bracelet.save(function(err) {
-          if (err)
-              res.send(err);
-
-          res.json({ status: 1, _id: bracelet._id });
-      });
-
-  });
-}).delete(function(req, res) {
-    Bracelet.remove({
-        _id: req.params.bracelet_id
-    }, function(err, bear) {
-        if (err)
-            res.send(err);
-
-        res.json({ status: 1 });
-    });
-});
+  .get(braceletService.one)
+  .put(braceletService.save)
+  .delete(braceletService.delete);
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
