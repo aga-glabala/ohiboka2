@@ -28,6 +28,7 @@ declare const DISQUSWIDGETS:any;
         <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
         <div>Data dodania: <strong>todo</strong></div>
         <div>Komentarzy: <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id"></span></div>
+        <div><a (click)="delete()">Usuń</a></div>
       </div>
       <div class="col-xs-12">
         <disqus id="disqus_thread" braceletName="{{bracelet.name}}" braceletId="{{bracelet.id}}"></disqus>
@@ -41,13 +42,25 @@ export class BraceletDetailComponent implements OnInit, OnDestroy {
   bracelet : BraceletInterface;
   commentsLoaded : boolean = false;
 
-  constructor(public BraceletService:BraceletService, private route: ActivatedRoute) {
+  constructor(public BraceletService:BraceletService, private route: ActivatedRoute, private router: Router) {
 
+  }
+
+  delete() {
+    this.sub = this.route.params.subscribe(params => {
+       let id = params['id'];
+       this.BraceletService.deleteBracelet(id).subscribe(
+                            response => {
+                              if(response.status) {
+                                this.router.navigate(['/bracelets/list']);
+                              }
+                            });
+     });
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-       let id = params['id']; // (+) converts string 'id' to a number
+       let id = params['id'];
        this.BraceletService.getBracelet(id).subscribe(
                             bracelet => this.bracelet = bracelet);
      });

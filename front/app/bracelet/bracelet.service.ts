@@ -53,6 +53,11 @@ export class BraceletService {
     }
   }
 
+  deleteBracelet(id: string) {
+    return this.http.delete(AppService.API + "bracelets/" + id)
+                    .map(this.extractData);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || [];
