@@ -9,6 +9,7 @@ export class TextBracelet implements BraceletInterface {
     rows: TextRow[];
     strings: string[];
     id: string;
+    created: Date;
 
     constructor(braceletInfo:any) {
       this.name = braceletInfo.name;

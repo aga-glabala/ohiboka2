@@ -2,18 +2,20 @@ import * as mongoose from 'mongoose';
 
 export interface IBracelet extends mongoose.Document {
   name: string,
-  strings: string[],
+  strings: string,
   type: string,
   public: boolean,
-  rows: Object[]
+  rows: Object[],
+  created: Date
 };
 
 export const BraceletSchema   = new mongoose.Schema({
     name: String,
-    strings: Array,
+    strings: [String],
     type: String,
     public: Boolean,
-    rows: Array
+    rows: [],
+    created: { type: Date, default: Date.now }
 });
 
 export const Bracelet = mongoose.model<IBracelet>('Bracelet', BraceletSchema);

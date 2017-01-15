@@ -6,6 +6,7 @@ export interface BraceletInterface {
   rows: Row[];
   strings: string[];
   id: string;
+  created: Date;
 
   addRowAtBegining(): void;
   addRowAtEnd(): void;

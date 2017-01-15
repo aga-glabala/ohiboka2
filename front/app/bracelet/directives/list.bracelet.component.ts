@@ -1,11 +1,9 @@
-import { Component, OnInit, AfterViewInit, AfterContentInit} from '@angular/core';
-import {BraceletService} from './bracelet.service';
-import {BraceletInterface} from './models/bracelet.interface';
+import { Component, AfterViewInit, AfterContentInit, Input} from '@angular/core';
 declare const DISQUSWIDGETS:any;
 
 @Component({
   selector: 'bracelet-list',
-  template: `<h1>Najnowsze</h1>
+  template: `
   <div class="row">
     <div class="col-xs-1 col-md-6 col-lg-4" *ngFor="let bracelet of bracelets">
       <div class="card card-block">
@@ -19,16 +17,11 @@ declare const DISQUSWIDGETS:any;
     </div>
   </div>`
 })
-export class BraceletListComponent implements OnInit {
-  constructor(public BraceletService:BraceletService) {
+export class BraceletListComponent {
+  @Input() bracelets;
+  constructor() {
   }
-  bracelets : BraceletInterface[] = [];
   commentsLoaded : boolean = false;
-
-  ngOnInit() {
-    this.BraceletService.getList().subscribe(
-                       bracelets => this.bracelets = bracelets);
-  }
 
   ngAfterViewChecked() {
     if(document.getElementsByClassName('disqus-comment-count').length > 0 && !this.commentsLoaded) {

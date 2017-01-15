@@ -8,6 +8,7 @@ import { AppComponent }   from './app.component';
 import { BraceletModule }   from './bracelet/bracelet.module';
 import { EditorModule }   from './editor/editor.module';
 import { UsersModule }   from './users/users.module';
+import { CommonsModule }   from './commons/commons.module';
 
 @NgModule({
   imports: [
@@ -15,10 +16,11 @@ import { UsersModule }   from './users/users.module';
     BraceletModule,
     EditorModule,
     UsersModule,
+    CommonsModule,
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: '/bracelets/list',
+        redirectTo: '/bracelets/index',
         pathMatch: 'full'
       }
     ])

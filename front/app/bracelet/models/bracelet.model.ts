@@ -9,6 +9,7 @@ export class Bracelet implements BraceletInterface {
     id: string;
     public: boolean;
     type: string;
+    created: Date;
 
     constructor(braceletInfo:any) {
         this.name = braceletInfo.name;
@@ -16,6 +17,7 @@ export class Bracelet implements BraceletInterface {
         this.id = braceletInfo._id;
         this.type = braceletInfo.type;
         this.rows = [];
+        this.created = braceletInfo.created;
 
         var row = braceletInfo.rows[0];
         var new_row = [];

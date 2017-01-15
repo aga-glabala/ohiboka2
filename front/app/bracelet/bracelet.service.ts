@@ -33,10 +33,17 @@ export class BraceletService {
                   .map(BraceletService.create);
   }
 
-  getList(page: number = 0, count: number = 10) {
+  getList(page: number = 0) {
     return this.http.get(AppService.API + "bracelets")
                     .map(this.extractData)
-                    .map(this.createFromArray);
+                    .map(data => {
+                      var bracelets = this.createFromArray(data.bracelets);
+                      var count = data.count;
+                      return {
+                        bracelets: bracelets,
+                        count: count
+                      }
+                    });
   }
 
   saveBracelet(bracelet: BraceletInterface) {

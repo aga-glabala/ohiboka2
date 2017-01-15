@@ -19,11 +19,11 @@ export class BraceletService {
   }
 
   all(req, res) {
-    Bracelet.find(function(err, bracelets) {
+    Bracelet.find({public: true}).limit(req.limit ? req.limit : 18).exec(function(err, bracelets) {
       if (err)
       res.send(err);
 
-      res.json(bracelets);
+      res.json({bracelets: bracelets, count: 10});
     });
   }
 

@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from './users/auth.service';
+import * as moment from 'moment';
+import 'momentLocale';
+
 declare const FB:any;
 @Component({
   selector: 'my-app',
@@ -10,7 +13,7 @@ declare const FB:any;
         <h1 class="col-md-5"><span class="sr-only">Ohiboka</span></h1>
         <nav class="col-md-7 text-md-right">
           <a [routerLink]="['/bracelet/new']">New bracelet</a>
-          <a [routerLink]="['/bracelets/list']">Bracelets</a>
+          <a [routerLink]="['/bracelets/index']">Bracelets</a>
           <a *ngIf="!userLogged" [routerLink]="['/user/login']">Zaloguj się</a>
           <a *ngIf="userLogged" (click)="logout()">Wyloguj się</a>
         </nav>
@@ -33,6 +36,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
+    moment.locale('pl');
+
     FB.init({
         appId      : '371302376535518',
         cookie     : true,  // enable cookies to allow the server to access
