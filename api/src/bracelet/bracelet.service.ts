@@ -19,12 +19,18 @@ export class BraceletService {
   }
 
   all(req, res) {
-    Bracelet.find({public: true}).limit(req.limit ? req.limit : 18).exec(function(err, bracelets) {
-      if (err)
-      res.send(err);
+    let limit : number = req.query.limit ? +req.query.limit : 18;
+    let page : number = req.query.page ? +req.query.page - 1 : 0;
+    console.log(req.query)
+    Bracelet.count({public: true}).exec(function(err, count) {
+      Bracelet.find({public: true}).skip(limit*page).limit(limit).exec(function(err, bracelets) {
+        if (err)
+        res.send(err);
 
-      res.json({bracelets: bracelets, count: 10});
-    });
+        res.json({bracelets: bracelets, count: count});
+      });
+    })
+
   }
 
   one(req, res) {

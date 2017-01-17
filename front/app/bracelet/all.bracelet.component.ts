@@ -8,7 +8,8 @@ declare const DISQUSWIDGETS:any;
   selector: 'bracelet-all',
   template: `<h1>Wszystkie bransoletki</h1>
   <bracelet-list [bracelets]="bracelets"></bracelet-list>
-  <pagination [itemsCount]="127" [itemsForPage]="18" [activePage]="page"></pagination>
+  <pagination *ngIf="count" [itemsCount]="count" [itemsForPage]="18" [activePage]="page"
+         [url]="generateURL"></pagination>
   `
 })
 export class BraceletAllComponent implements OnInit {
@@ -25,6 +26,7 @@ export class BraceletAllComponent implements OnInit {
        this.page = params['page'] ? params['page'] : 1;
        this.BraceletService.getList(this.page).subscribe(
                           data => {
+                            console.log(data.count)
                             this.count = data.count;
                             this.bracelets = data.bracelets;
                           });
@@ -34,5 +36,9 @@ export class BraceletAllComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  generateURL(i) {
+    return "/bracelets/all/" + i;
   }
 }
