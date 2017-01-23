@@ -21,9 +21,13 @@ export class BraceletService {
   all(req, res) {
     let limit : number = req.query.limit ? +req.query.limit : 18;
     let page : number = req.query.page ? +req.query.page - 1 : 0;
-    console.log(req.query)
+    let sortby = {'created': 1};
+    if(req.query.sortby == 'oldest') {
+      sortby = {'created': -1}
+    }
+
     Bracelet.count({public: true}).exec(function(err, count) {
-      Bracelet.find({public: true}).skip(limit*page).limit(limit).exec(function(err, bracelets) {
+      Bracelet.find({public: true}).sort(sortby).skip(limit*page).limit(limit).exec(function(err, bracelets) {
         if (err)
         res.send(err);
 

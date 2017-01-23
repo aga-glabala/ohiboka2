@@ -33,8 +33,9 @@ export class BraceletService {
                   .map(BraceletService.create);
   }
 
-  getList(page: number = 0, limit: number = 18) {
-    return this.http.get(AppService.API + "bracelets?page=" + page + "&limit=" + limit)
+  getList(page: number = 1, limit: number = 18, sortby: string = "newest") {
+    return this.http.get(AppService.API + "bracelets?page=" + page + "&limit="
+          + limit + "&sortby=" + sortby)
                     .map(this.extractData)
                     .map(data => {
                       var bracelets = this.createFromArray(data.bracelets);
