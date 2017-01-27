@@ -1,7 +1,8 @@
-import { Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {BraceletService} from './bracelet.service';
-import {BraceletInterface} from './models/bracelet.interface';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BraceletService } from './bracelet.service';
+import { BraceletInterface } from './models/bracelet.interface';
+import { Observable } from 'rxjs';
 declare const DISQUSWIDGETS:any;
 
 @Component({
@@ -25,41 +26,21 @@ export class BraceletAllComponent implements OnInit {
   bracelets : BraceletInterface[] = [];
   count: number;
   commentsLoaded : boolean = false;
-  private subParams: any;
-  private subQuery: any;
-  private params: any;
-  private query: any;
   page: number;
 
   ngOnInit() {
-    this.subParams = this.route.params.subscribe(params => {
-      this.params = params;
-      this.getList();
-    });
-    this.subQuery = this.route.queryParams.subscribe(query => {
-      this.query = query;
-      this.getList();
-    });
-  }
-
-  private getList() {
-    if(this.params && this.query) {
-      this.page = this.params['page'] ? this.params['page'] : 1;
-      this.BraceletService.getList(this.page, 18, this.query.sortby).subscribe(
-                         data => {
-                           this.count = data.count;
-                           this.bracelets = data.bracelets;
-                         });
-    }
+    Observable.zip(this.route.params, this.route.queryParams).switchMap(params => {
+      return this.BraceletService.getList(params.page, 18, params.sortby)
+    }).subscribe(
+       data => {
+         this.count = data.count;
+         this.bracelets = data.bracelets;
+       }
+     );
   }
 
   changeSorting(sortby) {
     this.router.navigate(['/bracelets/all/', 1], {queryParams: { 'sortby': sortby }});
-  }
-
-  ngOnDestroy() {
-    this.subQuery.unsubscribe();
-    this.subParams.unsubscribe();
   }
 
   generateURL(i) {

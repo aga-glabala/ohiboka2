@@ -26,7 +26,6 @@ export class PaginationComponent {
   @Input() itemsForPage;
   @Input() url;
   pages: number[];
-  private sub: any;
   constructor(private route: ActivatedRoute, private router: Router) {
   }
 
@@ -35,6 +34,5 @@ export class PaginationComponent {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 }
