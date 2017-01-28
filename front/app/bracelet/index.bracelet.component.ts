@@ -7,6 +7,7 @@ declare const DISQUSWIDGETS:any;
   selector: 'bracelet-index',
   template: `<h1>Najnowsze</h1>
   <bracelet-list [bracelets]="bracelets"></bracelet-list>
+  <a [routerLink]="['/bracelets/all', 1]">Zobacz wszystkie</a>
   `
 })
 export class BraceletIndexComponent implements OnInit {
@@ -14,10 +15,10 @@ export class BraceletIndexComponent implements OnInit {
   }
   bracelets : BraceletInterface[] = [];
   commentsLoaded : boolean = false;
-  count : number; 
+  count : number;
 
   ngOnInit() {
-    this.BraceletService.getList().subscribe(
+    this.BraceletService.getList(1, 6).subscribe(
                        data => {
                          this.count = data.count;
                          this.bracelets = data.bracelets;
