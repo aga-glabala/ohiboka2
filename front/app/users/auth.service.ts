@@ -4,8 +4,7 @@ import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CookieService } from 'angular2-cookie/core';
 import { User } from './user.model';
-
-declare const FB:any;
+import {AppService} from '../app.service';
 
 @Injectable()
 export class AuthService {
@@ -20,8 +19,19 @@ export class AuthService {
     this.loggedUser.next(user);
   }
 
-  public loginFB(response) {
-    this.loggedUser.next(new User(response.name, response.email));
+  public loginFB() {
+    let that = this;
+    FB.login(function(response) {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      that.http.post(AppService.API + "users/facebooklogin",response.authResponse,options)
+                    .subscribe((data) => {
+                      console.log('a', data)
+                    });
+      that.loggedUser.next(new User(response.name, response.email));
+    },{
+      scope: 'email'
+    });
   }
 
   public logout() {
@@ -34,7 +44,7 @@ export class AuthService {
 
   public isLoggedUser() {
     if(this.loggedUser.getValue()) return true;
-    this.isLoggedFB();
+    //this.isLoggedFB();
   }
 
   private isLoggedFB() {
@@ -43,7 +53,7 @@ export class AuthService {
 
       if (response.status === 'connected') {
         FB.api('/me?fields=email,name', function(resp) {
-          that.loginFB(resp)
+          that.loginFB()
         });
         // connect here with your server for facebook login by passing access token given by facebook
       } else if (response.status === 'not_authorized') {
