@@ -16,7 +16,7 @@ declare const FB:any;
     </div>
     <div class="col-md-6">
       <h2>Logowanie</h2>
-      <form (submit)="login(loginEmail.value, loginPassword.value)" #loginForm="ngForm">
+      <form (submit)="login(loginEmail.value, loginPassword.value)">
           <div class="form-group">
               <label for="login-email">Email</label>
               <input type="text" id="login-email" class="form-control" name="email" #loginEmail>
@@ -31,14 +31,18 @@ declare const FB:any;
     </div>
     <div class="col-md-6">
       <h2>Rejestracja</h2>
-      <form action="/signup" method="post">
+      <form (submit)="register(registerEmail.value, registerPassword.value,registerPassword2.value)">
         <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
+            <label for="register-email">Email</label>
+            <input type="text" class="form-control" name="email" #registerEmail id="register-email">
         </div>
         <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
+            <label for="register-password">Password</label>
+            <input type="password" class="form-control" name="password" #registerPassword id="register-password">
+        </div>
+        <div class="form-group">
+            <label for="register-password2">Repeat password</label>
+            <input type="password" class="form-control" name="password2" #registerPassword2 id="register-password2">
         </div>
 
         <button type="submit" class="btn btn-warning btn-lg">Signup</button>
@@ -58,6 +62,15 @@ export class LoginComponent {
     login(login, password) {
       console.log(login, password);
       this.AuthService.login(login, password).subscribe(
+        (data) => {
+          console.log(data);
+        }
+      );
+    }
+
+    register(login, password, password2) {
+      console.log(login, password, password2);
+      this.AuthService.register(login, password, password2).subscribe(
         (data) => {
           console.log(data);
         }

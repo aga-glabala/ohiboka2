@@ -58,7 +58,6 @@ router.route('/bracelets/:bracelet_id')
   .delete(braceletService.delete);
 
 
-
   var userService = new UserService();
 
   router.route('/users/facebooklogin')
@@ -66,7 +65,7 @@ router.route('/bracelets/:bracelet_id')
 
 
   localStrategy(passport);
-  router.post('/users/signup',
+  router.post('/users/register',
     function(req, res, next ){
     passport.authenticate('local-signup', function(err, user, info) {
       if (err) { return next(err) }

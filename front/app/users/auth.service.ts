@@ -33,6 +33,24 @@ export class AuthService {
                     });
   }
 
+  public register(login: string, password: string, password2: string) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let that = this;
+    return this.http.post(AppService.API + "users/register", {email: login, password: password, password2: password2} ,options)
+                    .map((data) => {
+                      if(data.status == 200) {
+                        let response = data.json();
+                        let user = new User(response.user.local.name, response.user.local.email);
+                        that.loggedUser.next(user);
+                        return { status: 1, user: user };
+                      } else {
+                        let response = data.json();
+                        return { status: 0, user: null, message: response.message };
+                      }
+                    });
+  }
+
   public loginFB() {
     let that = this;
     FB.login(function(response) {
