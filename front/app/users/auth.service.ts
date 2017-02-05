@@ -15,8 +15,22 @@ export class AuthService {
     this.loggedUser = new BehaviorSubject(undefined);
   }
 
-  public login(user : User) {
-    this.loggedUser.next(user);
+  public login(login: string, password: string) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let that = this;
+    return this.http.post(AppService.API + "users/login", {email: login, password: password} ,options)
+                    .map((data) => {
+                      if(data.status == 200) {
+                        let response = data.json();
+                        let user = new User(response.user.local.name, response.user.local.email);
+                        that.loggedUser.next(user);
+                        return { status: 1, user: user };
+                      } else {
+                        let response = data.json();
+                        return { status: 0, user: null, message: response.message };
+                      }
+                    });
   }
 
   public loginFB() {
