@@ -3,15 +3,17 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as mongoose from 'mongoose';
 import * as passport from 'passport';
-import * as session from 'express-session';
+import * as jwt from 'jsonwebtoken';
+import * as BearerStrategy from 'passport-http-bearer';
 
 import { BraceletService }  from './bracelet/bracelet.service';
 import { UserService }  from './user/user.service';
-import { localStrategy } from './user/passport-config';
+import { localStrategy } from './user/passport-local-config';
 
 var app = express();
 var port = process.env.PORT || 8080;        // set our port
 
+var secretJWT = 'sdfdsfoweiiru3ufjfdsj';
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
@@ -24,9 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-app.use(session({ secret: 'erc5u93845c3henhszcarcyy4327yt' }));
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 mongoose.connect('mongodb://mo1062_bracelet:Qs2fXUc4Qmj1qdCp8Pp5@mongo10.mydevil.net:27017/mo1062_bracelet'); // connect to our database
 
@@ -80,7 +81,9 @@ router.route('/bracelets/:bracelet_id')
       passport.authenticate('local-login', function(err, user, info) {
         if (err) { return next(err) }
         if (!user) { return res.json( { action: 'login', status: 0, message: info.message }) }
-        res.json({ action: 'login', status: 1, user: user });
+
+        var token = jwt.sign(user, secretJWT, {});
+        res.json({ action: 'login', status: 1, user: user, token: token});
       })(req, res, next);
   });
 

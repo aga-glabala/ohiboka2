@@ -8,11 +8,18 @@ import {AppService} from '../app.service';
 
 @Injectable()
 export class AuthService {
+  public token: string;
 
   private loggedUser : BehaviorSubject<User>;
 
   constructor (private http: Http, private _cookieService:CookieService) {
     this.loggedUser = new BehaviorSubject(undefined);
+
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if(currentUser) {
+      this.token = currentUser.token;
+      this.loggedUser.next(new User(currentUser.username, undefined));
+    }
   }
 
   public login(login: string, password: string) {
@@ -25,6 +32,14 @@ export class AuthService {
                         let response = data.json();
                         let user = new User(response.user.local.name, response.user.local.email);
                         that.loggedUser.next(user);
+                        let token = response.token;
+                        if (token) {
+                          // set token property
+                          this.token = token;
+
+                          // store username and jwt token in local storage to keep user logged in between page refreshes
+                          localStorage.setItem('currentUser', JSON.stringify({ username: response.user.local.name, token: token }));
+                        }
                         return { status: 1, user: user };
                       } else {
                         let response = data.json();
@@ -51,23 +66,11 @@ export class AuthService {
                     });
   }
 
-  public loginFB() {
-    let that = this;
-    FB.login(function(response) {
-      let headers = new Headers({ 'Content-Type': 'application/json' });
-      let options = new RequestOptions({ headers: headers });
-      that.http.post(AppService.API + "users/facebooklogin",response.authResponse,options)
-                    .subscribe((data) => {
-                      console.log('a', data)
-                    });
-      that.loggedUser.next(new User(response.name, response.email));
-    },{
-      scope: 'email'
-    });
-  }
-
   public logout() {
     this.loggedUser.next(null);
+    // clear token remove user from local storage to log user out
+    this.token = null;
+    localStorage.removeItem('currentUser');
   }
 
   public getUser() {
@@ -78,7 +81,7 @@ export class AuthService {
     if(this.loggedUser.getValue()) return true;
     //this.isLoggedFB();
   }
-
+/*
   private isLoggedFB() {
     let that = this;
     FB.getLoginStatus(response => {
@@ -98,25 +101,19 @@ export class AuthService {
     },
     true);
   }
-  /*getList(page: number = 0, count: number = 10) {
-    return this.http.get("http://b.ohiboka.com/mo1062_bracelet/bracelet")
-                    .map(this.extractData)
-                    .map(this.createFromArray);
+  */
+  public loginFB() {
+    let that = this;
+    FB.login(function(response) {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      that.http.post(AppService.API + "users/facebooklogin",response.authResponse,options)
+                    .subscribe((data) => {
+                      console.log('a', data)
+                    });
+      that.loggedUser.next(new User(response.name, response.email));
+    },{
+      scope: 'email'
+    });
   }
-
-  saveBracelet(bracelet: BraceletInterface) {
-    console.log(bracelet.toJson());
-
-    let body = JSON.stringify(bracelet.toJson());
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-
-    if(bracelet.id) {
-      return this.http.put("http://b.ohiboka.com/mo1062_bracelet/bracelet/" + bracelet.id, body, options)
-        .map(this.extractData);
-    } else {
-      return this.http.post("http://b.ohiboka.com/mo1062_bracelet/bracelet", body, options)
-        .map(this.extractData);
-    }
-  }*/
 }
