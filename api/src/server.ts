@@ -3,17 +3,15 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as mongoose from 'mongoose';
 import * as passport from 'passport';
-import * as jwt from 'jsonwebtoken';
 import * as BearerStrategy from 'passport-http-bearer';
 
 import { BraceletService }  from './bracelet/bracelet.service';
 import { UserService }  from './user/user.service';
-import { localStrategy } from './user/passport-local-config';
+import { userMiddleware } from './user/user.middleware';
 
 var app = express();
 var port = process.env.PORT || 8080;        // set our port
-
-var secretJWT = 'sdfdsfoweiiru3ufjfdsj';
+app.set('secretJWT', 'sdfdsfoweiiru3ufjfdsj'); // secret variable
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
@@ -25,9 +23,6 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser.json());
-
-app.use(passport.initialize());
-//app.use(passport.session());
 
 mongoose.connect('mongodb://mo1062_bracelet:Qs2fXUc4Qmj1qdCp8Pp5@mongo10.mydevil.net:27017/mo1062_bracelet'); // connect to our database
 
@@ -59,33 +54,23 @@ router.route('/bracelets/:bracelet_id')
   .delete(braceletService.delete);
 
 
-  var userService = new UserService();
+  var userService = new UserService(app.get('secretJWT'));
 
   router.route('/users/facebooklogin')
-    .post(userService.loginFB);
+    .post(userService.loginFB());
 
+  router.route('/users/login')
+    .post(userService.loginLocal());
 
-  localStrategy(passport);
-  router.post('/users/register',
-    function(req, res, next ){
-    passport.authenticate('local-signup', function(err, user, info) {
-      if (err) { return next(err) }
-      if (!user) { return res.json( { action: 'register', status: 0, message: info.message }) }
-      res.json({ action: 'register', status: 1, user: user });
-    })(req, res, next);
+  router.route('/users/register')
+    .post(userService.registerLocal());
+
+// PRIVATE ROUTES -------------------------------
+  router.use(userMiddleware(app.get('secretJWT')));
+  router.get('/private', function(req, res) {
+    res.json({ message: 'hello!' });
   });
 
-  // process the login form
-  router.post('/users/login',
-    function(req, res, next ){
-      passport.authenticate('local-login', function(err, user, info) {
-        if (err) { return next(err) }
-        if (!user) { return res.json( { action: 'login', status: 0, message: info.message }) }
-
-        var token = jwt.sign(user, secretJWT, {});
-        res.json({ action: 'login', status: 1, user: user, token: token});
-      })(req, res, next);
-  });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api

@@ -2,28 +2,11 @@ import * as mongoose from 'mongoose';
 import * as bcrypt from 'bcrypt-nodejs';
 
 interface IUser extends mongoose.Document {
-  local            : {
-      email        : String,
-      password     : String,
-  },
-  facebook         : {
-      id           : String,
-      token        : String,
-      email        : String,
-      name         : String
-  },
-  twitter          : {
-      id           : String,
-      token        : String,
-      displayName  : String,
-      username     : String
-  },
-  google           : {
-      id           : String,
-      token        : String,
-      email        : String,
-      name         : String
-  },
+  email        : String,
+  name        : String,
+  password     : String,
+  facebook_id : String,
+  facebook_token: String,
   created: Date;
 
   generateHash(String);
@@ -31,28 +14,11 @@ interface IUser extends mongoose.Document {
 };
 
 const UserSchema   = new mongoose.Schema({
-  local            : {
-      email        : String,
-      password     : String,
-  },
-  facebook         : {
-      id           : String,
-      token        : String,
-      email        : String,
-      name         : String
-  },
-  twitter          : {
-      id           : String,
-      token        : String,
-      displayName  : String,
-      username     : String
-  },
-  google           : {
-      id           : String,
-      token        : String,
-      email        : String,
-      name         : String
-  },
+  email        : String,
+  name        : String,
+  password     : String,
+  facebook_id : String,
+  facebook_token: String,
   created: { type: Date, default: Date.now }
 });
 

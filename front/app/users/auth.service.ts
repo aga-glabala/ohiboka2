@@ -7,7 +7,7 @@ import { User } from './user.model';
 import {AppService} from '../app.service';
 
 @Injectable()
-export class AuthService {
+export class AuthService { 
   public token: string;
 
   private loggedUser : BehaviorSubject<User>;
@@ -79,7 +79,6 @@ export class AuthService {
 
   public isLoggedUser() {
     if(this.loggedUser.getValue()) return true;
-    //this.isLoggedFB();
   }
 /*
   private isLoggedFB() {

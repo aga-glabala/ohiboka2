@@ -1,133 +1,120 @@
 import { User }  from './user.model';
 import * as request from 'request';
+import * as jwt from 'jsonwebtoken';
 
 export class UserService {
   fb: any;
-    constructor() {
-      this.fb = { appId: '371302376535518', secret: '0d34a0167a7f06d568506b00c4a76f3d' };
+  secretJWT;
+
+  constructor(secretJWT) {
+    this.fb = { appId: '371302376535518', secret: '0d34a0167a7f06d568506b00c4a76f3d' };
+    this.secretJWT = secretJWT;
+  }
+
+  loginLocal() {
+    let that = this;
+    return function(req, res) {
+      User.findOne({ 'email' :  req.body.email }, function(err, user) {
+        // if there are any errors, return the error before anything else
+        if (err)
+          return res.json({ action: 'login', status: 0, user: null,error: err});
+
+        // if no user is found, return the message
+        if (!user)
+          return res.json({ action: 'login', status: 0, user: null, error: {message: 'No user found.'}});
+
+        // if the user is found but the password is wrong
+        if (!user.validPassword(req.body.password))
+          return res.json({ action: 'login', status: 0, user: null, error: {message: 'Oops! Wrong password.'}});
+
+        // all is well, return successful user
+        return res.json({ action: 'login', status: 1, user: user, token: that.getToken(user)});
+      });
     }
+  }
 
-  loginFB(req, res) {
-    console.log('1', req.body);
+  registerLocal() {
+    let that = this;
+    return function(req, res) {
+      User.findOne({ 'email' :  req.body.email }, function(err, user) {
+        // if there are any errors, return the error
+        if (err)
+          return res.json({ action: 'register', status: 0, user: null, error: err});
 
-    User.findOne({ 'facebook.id' : req.body.userID }, function(err, user) {
-      console.log('user', user);
+        // check to see if theres already a user with that email
+        if (user) {
+          return res.json({ action: 'register', status: 0, user: null, error: {message: 'That email is already taken.'}});
+        } else {
 
-      // if there is an error, stop everything and return that
-      // ie an error connecting to the database
-      if (err) {
-        console.log(err);
-      }
+          // if there is no user with that email
+          // create the user
+          var newUser = new User();
 
-      // if the user is found, then log them in
-      if (user) {
-        console.log('user found', user);
-        res.json({ status: 1, user: user}); // user found, return that user
-      } else {
+          // set the user's local credentials
+          newUser.email    = req.body.email;
+          newUser.password = newUser.generateHash(req.body.password);
+
+          // save the user
+          newUser.save(function(err, user) {
+            if (err)
+            throw err;
+            return res.json({ action: 'register', status: 1, user: user, token: that.getToken(user)});
+          });
+        }
+      });
+
+    }
+  }
+
+  loginFB() {
+    let that = this;
+    return function(req, res) {
+
+      User.findOne({ 'facebook_id' : req.body.userID }, function(err, user) {
+
+        // if there is an error, stop everything and return that
+        // ie an error connecting to the database
+        if (err) {
+          console.log(err);
+        }
+
+        // if the user is found, then log them in
+        if (user) {
+          res.json({ status: 1, user: user}); // user found, return that user
+        } else {
           // if there is no user found with that facebook id, create them
 
           request.get(
             {url: `https://graph.facebook.com/v2.8/me?fields=id%2Cname%2Cemail&access_token=${req.body.accessToken}`},
             function(error, response, body) {
-                var json = JSON.parse(body);
+              var json = JSON.parse(body);
 
-                var newUser            = new User();
+              User.findOne({ 'email' : json.email }, function(err, user2) {
 
-                // set all of the facebook information in our user model
-                newUser.facebook.id    = json.id; // set the users facebook id
-                newUser.facebook.token = req.body.accessToken;
-                newUser.facebook.name  = json.name;
-                newUser.facebook.email = json.email;
+                let user = user2 || new User();
 
-                // save our user to the database
-                newUser.save(function(err) {
-                    if (err) {
-                      console.log(err);
-                    }
+                user.facebook_id    = json.id; // set the users facebook id
+                user.facebook_token = req.body.accessToken;
+                if(!user.name) {
+                  user.name  = json.name;
+                }
+                user.save(function(err, user3) {
+                  if (err) {
+                    console.log(err);
+                  }
 
-                    // if successful, return the new user
-                    res.json({ status: 1, user: newUser});
+                  // if successful, return the new user
+                  res.json({ status: 1, user: user3, token: that.getToken(user3)});
                 });
-              })
+              });
+            })
+          }
+
+        });
       }
-
-  });
-}
-
-
-  /*create(req, res) {
-    var bracelet = new Bracelet();
-
-    bracelet.name = req.body.name;
-    bracelet.strings = req.body.strings;
-    bracelet.type = req.body.type;
-    bracelet.public = req.body.public;
-    bracelet.rows = req.body.rows;
-    bracelet.save(function(err) {
-      if (err)
-      res.send(err);
-
-      res.json({ status: 1, _id: bracelet._id });
-    })
-  }
-
-  all(req, res) {
-    let limit : number = req.query.limit ? +req.query.limit : 18;
-    let page : number = req.query.page ? +req.query.page - 1 : 0;
-    let sortby = {'created': 1};
-    if(req.query.sortby == 'oldest') {
-      sortby = {'created': -1}
     }
 
-    Bracelet.count({public: true}).exec(function(err, count) {
-      Bracelet.find({public: true}).sort(sortby).skip(limit*page).limit(limit).exec(function(err, bracelets) {
-        if (err)
-        res.send(err);
-
-        res.json({bracelets: bracelets, count: count});
-      });
-    })
-
-  }
-
-  one(req, res) {
-    Bracelet.findOne({_id: req.params.bracelet_id}, function(err, bracelet) {
-      if (err)
-      res.send(err);
-      res.json(bracelet);
-    });
-  }
-
-  save(req, res) {
-
-    Bracelet.findById(req.params.bracelet_id, function(err, bracelet) {
-      if (err) {
-        res.send(err);
-      }
-      bracelet.name = req.body.name;
-      bracelet.strings = req.body.strings;
-      bracelet.type = req.body.type;
-      bracelet.public = req.body.public;
-      bracelet.rows = req.body.rows;
-
-      bracelet.save(function(err) {
-        if (err)
-        res.send(err);
-
-        res.json({ status: 1, _id: bracelet._id });
-      });
-    });
-  }
-
-  delete(req, res) {
-    Bracelet.remove({
-      _id: req.params.bracelet_id
-    }, function(err) {
-      if (err) {
-        res.send(err);
-      }
-
-      res.json({ status: 1 });
-    });
-  }*/
+    getToken(user) {
+      return  jwt.sign({id: user._id}, this.secretJWT, {});
+    }
 }

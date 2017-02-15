@@ -31,7 +31,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   logout() {
-    FB.logout();
     this.AuthService.logout();
   }
 

@@ -60,10 +60,8 @@ export class LoginComponent {
     }
 
     login(login, password) {
-      console.log(login, password);
       this.AuthService.login(login, password).subscribe(
         (data) => {
-          console.log(data);
         }
       );
     }
