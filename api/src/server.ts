@@ -71,8 +71,8 @@ router.route('/bracelets/:bracelet_id')
   privateRouter.get('/private', function(req, res) {
     res.json({ message: 'hello!' });
   });
-  privateRouter.post('/users/verify', function(req, res) {
-    res.json({ message: 'hello!' });
+  privateRouter.post('/users/verify', function(req:any, res) {
+    res.json({ user: req.decoded });
   });
 
 
