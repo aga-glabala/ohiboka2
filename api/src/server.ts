@@ -66,8 +66,12 @@ router.route('/bracelets/:bracelet_id')
     .post(userService.registerLocal());
 
 // PRIVATE ROUTES -------------------------------
-  router.use(userMiddleware(app.get('secretJWT')));
-  router.get('/private', function(req, res) {
+  var privateRouter = express.Router();
+  privateRouter.use(userMiddleware(app.get('secretJWT')));
+  privateRouter.get('/private', function(req, res) {
+    res.json({ message: 'hello!' });
+  });
+  privateRouter.post('/users/verify', function(req, res) {
     res.json({ message: 'hello!' });
   });
 
@@ -75,6 +79,7 @@ router.route('/bracelets/:bracelet_id')
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
+app.use('/api/private', privateRouter);
 
 
 // START THE SERVER

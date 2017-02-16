@@ -7,7 +7,7 @@ import { User } from './user.model';
 import {AppService} from '../app.service';
 
 @Injectable()
-export class AuthService { 
+export class AuthService {
   public token: string;
 
   private loggedUser : BehaviorSubject<User>;
@@ -17,8 +17,7 @@ export class AuthService {
 
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(currentUser) {
-      this.token = currentUser.token;
-      this.loggedUser.next(new User(currentUser.username, undefined));
+      this._login(currentUser.token, new User(currentUser.username, undefined));
     }
   }
 
@@ -30,16 +29,9 @@ export class AuthService {
                     .map((data) => {
                       if(data.status == 200) {
                         let response = data.json();
-                        let user = new User(response.user.local.name, response.user.local.email);
-                        that.loggedUser.next(user);
                         let token = response.token;
-                        if (token) {
-                          // set token property
-                          this.token = token;
-
-                          // store username and jwt token in local storage to keep user logged in between page refreshes
-                          localStorage.setItem('currentUser', JSON.stringify({ username: response.user.local.name, token: token }));
-                        }
+                        let user = new User(response.user.name, response.user.email);
+                        this._login(token, user);
                         return { status: 1, user: user };
                       } else {
                         let response = data.json();
@@ -56,8 +48,9 @@ export class AuthService {
                     .map((data) => {
                       if(data.status == 200) {
                         let response = data.json();
-                        let user = new User(response.user.local.name, response.user.local.email);
-                        that.loggedUser.next(user);
+                        let user = new User(response.user.name, response.user.email);
+                        let token = response.token;
+                        this._login(token, user);
                         return { status: 1, user: user };
                       } else {
                         let response = data.json();
@@ -80,27 +73,29 @@ export class AuthService {
   public isLoggedUser() {
     if(this.loggedUser.getValue()) return true;
   }
-/*
-  private isLoggedFB() {
-    let that = this;
-    FB.getLoginStatus(response => {
 
-      if (response.status === 'connected') {
-        FB.api('/me?fields=email,name', function(resp) {
-          that.loginFB()
-        });
-        // connect here with your server for facebook login by passing access token given by facebook
-      } else if (response.status === 'not_authorized') {
-        console.log(response);
-        this.logout();
-      } else {
-        console.log(response);
-        this.logout();
-      }
-    },
-    true);
+  public verifyUser() {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+    let options = new RequestOptions({ headers: headers });
+    let that = this;
+    console.log('this.token', this.token, headers)
+    return this.http.post(AppService.API + "private/users/verify", {} ,options)
+                    .map((data) => {
+                      console.log(data);
+                    });
   }
-  */
+
+  private _login(token, user) {
+    this.loggedUser.next(user);
+    if (token) {
+      // set token property
+      this.token = token;
+
+      // store username and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('currentUser', JSON.stringify({ username: user.name, token: token }));
+    }
+  }
+
   public loginFB() {
     let that = this;
     FB.login(function(response) {
@@ -108,9 +103,11 @@ export class AuthService {
       let options = new RequestOptions({ headers: headers });
       that.http.post(AppService.API + "users/facebooklogin",response.authResponse,options)
                     .subscribe((data) => {
-                      console.log('a', data)
+                      let response = data.json();
+                      let user = new User(response.user.name, response.user.email);
+                      let token = response.token;
+                      that._login(token, user);
                     });
-      that.loggedUser.next(new User(response.name, response.email));
     },{
       scope: 'email'
     });

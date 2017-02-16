@@ -48,10 +48,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
 
-    this.AuthService.isLoggedUser();
-
-    this.sub = this.AuthService.getUser().subscribe(user => {
-       this.userLogged = user;
+    this.AuthService.verifyUser().subscribe(user => {
+       //this.userLogged = user;
      });
   }
 

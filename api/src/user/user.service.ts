@@ -80,7 +80,7 @@ export class UserService {
 
         // if the user is found, then log them in
         if (user) {
-          res.json({ status: 1, user: user}); // user found, return that user
+          res.json({ status: 1, user: user, token: that.getToken(user)}); // user found, return that user
         } else {
           // if there is no user found with that facebook id, create them
 
