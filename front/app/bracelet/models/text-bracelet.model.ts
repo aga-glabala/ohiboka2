@@ -1,6 +1,7 @@
 import {TextNode, PhantomTextNode, createTextNode} from './text-node.model';
 import {TextRow} from './row.model';
 import {BraceletInterface} from './bracelet.interface';
+import {User} from '../../users/user.model';
 
 export class TextBracelet implements BraceletInterface {
     type: string;
@@ -10,12 +11,14 @@ export class TextBracelet implements BraceletInterface {
     strings: string[];
     id: string;
     created: Date;
+    author: User;
 
     constructor(braceletInfo:any) {
       this.name = braceletInfo.name;
       this.type = braceletInfo.type;
       this.strings = braceletInfo.strings;
       this.id = braceletInfo._id;
+      this.author = User.createUser({name: braceletInfo.author.name, id: braceletInfo.author.id});
       this.rows = [];
 
       var row = braceletInfo.rows[0];

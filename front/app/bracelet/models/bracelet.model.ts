@@ -1,6 +1,7 @@
 import {StandardNode, PhantomNode, createNode} from './standard-node.model';
 import {StandardRow} from './row.model';
 import {BraceletInterface} from './bracelet.interface';
+import {User} from '../../users/user.model';
 
 export class Bracelet implements BraceletInterface {
     name: string;
@@ -10,6 +11,7 @@ export class Bracelet implements BraceletInterface {
     public: boolean;
     type: string;
     created: Date;
+    author: User;
 
     constructor(braceletInfo:any) {
         this.name = braceletInfo.name;
@@ -18,6 +20,9 @@ export class Bracelet implements BraceletInterface {
         this.type = braceletInfo.type;
         this.rows = [];
         this.created = braceletInfo.created;
+        if(braceletInfo.author) {
+          this.author = User.createUser({name: braceletInfo.author.name, id: braceletInfo.author.id});
+        }
 
         var row = braceletInfo.rows[0];
         var new_row = [];

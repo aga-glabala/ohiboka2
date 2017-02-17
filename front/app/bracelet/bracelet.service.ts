@@ -5,6 +5,7 @@ import {BraceletInterface} from './models/bracelet.interface';
 import {Bracelet} from './models/bracelet.model';
 import {TextBracelet} from './models/text-bracelet.model';
 import {AppService} from '../app.service';
+import {User} from '../users/user.model';
 
 @Injectable()
 export class BraceletService {
@@ -48,15 +49,16 @@ export class BraceletService {
   }
 
   saveBracelet(bracelet: BraceletInterface) {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let body = JSON.stringify(bracelet.toJson());
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + currentUser.token});
     let options = new RequestOptions({ headers: headers });
 
     if(bracelet.id) {
-      return this.http.put(AppService.API + "bracelets/" + bracelet.id, body, options)
+      return this.http.put(AppService.API + "private/bracelets/" + bracelet.id, body, options)
         .map(this.extractData);
     } else {
-      return this.http.post(AppService.API + "bracelets", body, options)
+      return this.http.post(AppService.API + "private/bracelets", body, options)
         .map(this.extractData);
     }
   }

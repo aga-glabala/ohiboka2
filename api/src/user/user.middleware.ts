@@ -1,4 +1,5 @@
 import * as jwt from 'jsonwebtoken';
+import { User }  from './user.model';
 
 export function userMiddleware(secretJWT) {
   return function(req, res, next) {
@@ -17,11 +18,22 @@ export function userMiddleware(secretJWT) {
         // verifies secret and checks exp
         jwt.verify(token, secretJWT, function(err, decoded) {
           if (err) {
-            return res.json({ success: false, message: 'Failed to authenticate token.' });
+            return res.json({ status: 0, message: 'Failed to authenticate token.' });
           } else {
             // if everything is good, save to request for use in other routes
-            req.decoded = decoded;
-            next();
+            User.findOne({ '_id' :  decoded.id }, function(err, user) {
+              // if there are any errors, return the error before anything else
+              if (err)
+                return res.json({ status: 0, message: 'Failed to authenticate token.', error: err });
+
+              // if no user is found, return the message
+              if (!user)
+                return res.json({ status: 0, message: 'Failed to authenticate token.', error: {message: 'No user found.'} });
+
+              // all is well, return successful user
+              req.decoded = { action: 'login', status: 1, user: user, token: ''};
+              next();
+            });
           }
         });
 

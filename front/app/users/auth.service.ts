@@ -78,10 +78,16 @@ export class AuthService {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
     let options = new RequestOptions({ headers: headers });
     let that = this;
-    console.log('this.token', this.token, headers)
     return this.http.post(AppService.API + "private/users/verify", {} ,options)
                     .map((data) => {
-                      console.log(data);
+                      let response = data.json();
+                      if(response.status == 1) {
+                        let user = User.createUser(response.user);
+                        this.loggedUser.next(user);
+                        return user;
+                      } else {
+                        return response;
+                      }
                     });
   }
 
@@ -92,7 +98,7 @@ export class AuthService {
       this.token = token;
 
       // store username and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify({ username: user.name, token: token }));
+      localStorage.setItem('currentUser', JSON.stringify({ id: user.id, username: user.name, token: token }));
     }
   }
 

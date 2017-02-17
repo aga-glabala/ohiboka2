@@ -6,6 +6,10 @@ export interface IBracelet extends mongoose.Document {
   type: string,
   public: boolean,
   rows: Object[],
+  author: {
+    name: String,
+    id: String
+  },
   created: Date
 };
 
@@ -15,6 +19,10 @@ export const BraceletSchema   = new mongoose.Schema({
     type: String,
     public: Boolean,
     rows: [],
+    author: {
+      name: String,
+      id: String
+    },
     created: { type: Date, default: Date.now }
 });
 

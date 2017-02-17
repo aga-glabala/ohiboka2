@@ -1,4 +1,5 @@
 import { Bracelet }  from './bracelet.model';
+import { User } from '../user/user.model';
 
 export class BraceletService {
 
@@ -10,6 +11,7 @@ export class BraceletService {
     bracelet.type = req.body.type;
     bracelet.public = req.body.public;
     bracelet.rows = req.body.rows;
+    bracelet.author = {name: req.decoded.user.name, id: req.decoded.user.id};
     bracelet.save(function(err) {
       if (err)
       res.send(err);
@@ -21,9 +23,9 @@ export class BraceletService {
   all(req, res) {
     let limit : number = req.query.limit ? +req.query.limit : 18;
     let page : number = req.query.page ? +req.query.page - 1 : 0;
-    let sortby = {'created': 1};
+    let sortby = {'created': -1};
     if(req.query.sortby == 'oldest') {
-      sortby = {'created': -1}
+      sortby = {'created': 1}
     }
 
     Bracelet.count({public: true}).exec(function(err, count) {

@@ -45,13 +45,10 @@ router.get('/', function(req, res) {
 var braceletService = new BraceletService();
 
 router.route('/bracelets')
-  .post(braceletService.create)
   .get(braceletService.all);
 
 router.route('/bracelets/:bracelet_id')
-  .get(braceletService.one)
-  .put(braceletService.save)
-  .delete(braceletService.delete);
+  .get(braceletService.one);
 
 
   var userService = new UserService(app.get('secretJWT'));
@@ -72,9 +69,16 @@ router.route('/bracelets/:bracelet_id')
     res.json({ message: 'hello!' });
   });
   privateRouter.post('/users/verify', function(req:any, res) {
-    res.json({ user: req.decoded });
+    let response = req.decoded;
+    response.user.token = userService.getToken(response.user);
+    res.json(response);
   });
 
+  privateRouter.route('/bracelets')
+    .post(braceletService.create)
+  privateRouter.route('/bracelets/:bracelet_id')
+    .put(braceletService.save)
+    .delete(braceletService.delete);
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api

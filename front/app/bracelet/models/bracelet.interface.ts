@@ -1,4 +1,5 @@
 import {Row} from './row.model';
+import {User} from '../../users/user.model';
 
 export interface BraceletInterface {
   name: string;
@@ -7,6 +8,7 @@ export interface BraceletInterface {
   strings: string[];
   id: string;
   created: Date;
+  author: User;
 
   addRowAtBegining(): void;
   addRowAtEnd(): void;

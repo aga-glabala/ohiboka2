@@ -26,7 +26,7 @@ import {BraceletService} from '../../bracelet/bracelet.service';
   <button (click)="bracelet.addRowAtEnd()">dodaj wiersz</button>
   <button (click)="bracelet.removeLastRow()">usuń wiersz</button>
 
-  <form>
+  <form *ngIf="bracelet">
     <div class="form-group">
       <label for="name">Nazwa</label>
       <input type="text" [(ngModel)]="bracelet.name" name="name" class="form-control" id="name" required>
@@ -53,6 +53,9 @@ export class EditorBraceletComponent {
         this.router.navigate(['/bracelet/edit', data._id]);
       }
     });
+  }
+
+  ngOnInit() {
   }
 
   colorChanged(color, index) {

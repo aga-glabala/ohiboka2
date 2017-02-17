@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, AfterContentInit, Input} from '@angular/core';
+import { AuthService } from '../../users/auth.service';
 declare const DISQUSWIDGETS:any;
 
 @Component({
@@ -10,8 +11,9 @@ declare const DISQUSWIDGETS:any;
         <a class="card-link" [routerLink]="['/bracelet/detail', bracelet.id]">
           <preview_bracelet class="vertical" [bracelet]="bracelet" [readonly]="true"></preview_bracelet>
           <h4 class="card-title">{{bracelet.name}}</h4>
-          <a class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
+          <a *ngIf="user && user.id == bracelet.author.id" class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
           <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id">Komentarze </span>
+          <span class="author" >{{bracelet.author.getUsername()}}</span>
         </a>
       </div>
     </div>
@@ -19,7 +21,8 @@ declare const DISQUSWIDGETS:any;
 })
 export class BraceletListComponent {
   @Input() bracelets;
-  constructor() {
+  user;
+  constructor(private AuthService: AuthService) {
   }
   commentsLoaded : boolean = false;
 
@@ -28,5 +31,11 @@ export class BraceletListComponent {
       DISQUSWIDGETS.getCount({reset: true});
       this.commentsLoaded = true;
     }
+  }
+
+  ngOnInit() {
+    this.AuthService.getUser().subscribe(user => {
+       this.user = user;
+     });
   }
 }
