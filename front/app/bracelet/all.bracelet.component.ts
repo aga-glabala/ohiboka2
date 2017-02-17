@@ -29,7 +29,7 @@ export class BraceletAllComponent implements OnInit {
   page: number;
 
   ngOnInit() {
-    Observable.zip(this.route.params, this.route.queryParams).switchMap(params => {
+    Observable.zip(this.route.params, this.route.queryParams).switchMap((params : any[]) => {
       return this.BraceletService.getList(params[0].page, 18, params[1].sortby)
     }).subscribe(
        data => {

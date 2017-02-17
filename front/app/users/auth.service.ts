@@ -6,6 +6,8 @@ import { CookieService } from 'angular2-cookie/core';
 import { User } from './user.model';
 import {AppService} from '../app.service';
 
+declare const FB:any;
+
 @Injectable()
 export class AuthService {
   public token: string;

@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e998f6af-dc13-4758-a192-846d4a40be5b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/bracelet/all.bracelet.component.ts" afterPath="$PROJECT_DIR$/front/app/bracelet/all.bracelet.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/app/users/auth.service.ts" afterPath="$PROJECT_DIR$/front/app/users/auth.service.ts" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="all.bracelet.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/front/app/bracelet/all.bracelet.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+              <folding>
+                <marker date="1487361570453" expanded="true" signature="388:600" ph="..." />
+                <marker date="1487361570453" expanded="true" signature="462:591" ph="..." />
+                <marker date="1487361570453" expanded="true" signature="748:790" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auth.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/app/users/auth.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="31" column="46" lean-forward="true" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front/app/users/login.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-10">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="21" />
+              <folding>
+                <marker date="1487067515689" expanded="true" signature="214:2024" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="242:450" ph="..." />
+                <marker date="1487067515689" expanded="false" signature="293:310" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="344:428" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="477:1098" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="571:1087" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="606:773" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="808:994" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="1125:2015" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="1254:2004" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="1287:1457" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="1490:1679" ph="..." />
+                <marker date="1487067515689" expanded="true" signature="1712:1912" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/front/app/bracelet/all.bracelet.component.ts" />
+        <option value="$PROJECT_DIR$/front/app/users/auth.service.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/api/build/node_modules" />
+    <handled-path value="$PROJECT_DIR$/api/node_modules" />
+    <handled-path value="$PROJECT_DIR$/front/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="27" />
+    <option name="width" value="1920" />
+    <option name="height" value="1053" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>CSS</id>
+          </State>
+          <State>
+            <id>Code style issuesCSS</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>DOM issuesJavaScript</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>Invalid elementsCSS</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsCSS</id>
+          </State>
+          <State>
+            <id>Pug/Jade</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ohiboka2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ohiboka2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ohiboka2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ohiboka2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ohiboka2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ohiboka2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ohiboka2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ohiboka2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ohiboka2">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="/usr/bin/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="typescript-compiler-editor-notification" value="false" />
+  </component>
+  <component name="RunManager" selected="npm.api">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <package-json value="$PROJECT_DIR$/api/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="false" name="api" type="js.build_tools.npm" factoryName="npm">
+      <package-json value="$PROJECT_DIR$/api/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="front" type="js.build_tools.npm" factoryName="npm">
+      <package-json value="$PROJECT_DIR$/front/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="npm.api" />
+      <item index="1" class="java.lang.String" itemvalue="npm.front" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e998f6af-dc13-4758-a192-846d4a40be5b" name="Default" comment="" />
+      <created>1487359784077</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1487359784077</updated>
+      <workItem from="1487359786184" duration="352000" />
+      <workItem from="1487360630434" duration="986000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1338000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18229167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31122994" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/api/node_modules/reflect-metadata/Reflect.js" />
+        <option value="$PROJECT_DIR$/api/node_modules/reflect-metadata/Reflect.js.map" />
+        <option value="$PROJECT_DIR$/api/node_modules/json-typescript-mapper/index.js" />
+        <option value="$PROJECT_DIR$/api/node_modules/json-typescript-mapper/libs/utils.js" />
+        <option value="$PROJECT_DIR$/api/node_modules/json-typescript-mapper/spec/index.js" />
+        <option value="$PROJECT_DIR$/front/app/app.component.js" />
+        <option value="$PROJECT_DIR$/front/app/app.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/app.module.js" />
+        <option value="$PROJECT_DIR$/front/app/app.module.js.map" />
+        <option value="$PROJECT_DIR$/front/app/main.js" />
+        <option value="$PROJECT_DIR$/front/app/main.js.map" />
+        <option value="$PROJECT_DIR$/front/app/app.service.js" />
+        <option value="$PROJECT_DIR$/front/app/app.service.js.map" />
+        <option value="$PROJECT_DIR$/front/app/users/user.model.js" />
+        <option value="$PROJECT_DIR$/front/app/users/user.model.js.map" />
+        <option value="$PROJECT_DIR$/front/app/users/auth.service.js" />
+        <option value="$PROJECT_DIR$/front/app/users/auth.service.js.map" />
+        <option value="$PROJECT_DIR$/front/app/users/login.component.js" />
+        <option value="$PROJECT_DIR$/front/app/users/login.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/users/users.module.js" />
+        <option value="$PROJECT_DIR$/front/app/users/users.module.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/editor.module.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/editor.module.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/text-generator.new.component.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/text-generator.new.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/edit.bracelet.component.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/edit.bracelet.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/zigzak.new.component.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/zigzak.new.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/text.new.component.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/text.new.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/simple.new.component.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/simple.new.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/new.component.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/new.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/directives/editor-bracelet.component.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/directives/editor-bracelet.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/editor/directives/color-picker.component.js" />
+        <option value="$PROJECT_DIR$/front/app/editor/directives/color-picker.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/commons/commons.module.js" />
+        <option value="$PROJECT_DIR$/front/app/commons/commons.module.js.map" />
+        <option value="$PROJECT_DIR$/front/app/commons/pagination.directive.js" />
+        <option value="$PROJECT_DIR$/front/app/commons/pagination.directive.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/all.bracelet.component.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/all.bracelet.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/bracelet.service.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/bracelet.service.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/bracelet.module.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/bracelet.module.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/detail.bracelet.component.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/detail.bracelet.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/index.bracelet.component.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/index.bracelet.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/text-node.model.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/text-node.model.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/bracelet.model.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/bracelet.model.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/bracelet.interface.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/bracelet.interface.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/standard-node.model.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/standard-node.model.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/row.model.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/row.model.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/node.model.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/node.model.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/text-bracelet.model.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/models/text-bracelet.model.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/preview.bracelet.directive.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/preview.bracelet.directive.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/bracelet.directive.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/bracelet.directive.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/node.directive.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/node.directive.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/list.bracelet.component.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/list.bracelet.component.js.map" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/disqus.directive.js" />
+        <option value="$PROJECT_DIR$/front/app/bracelet/directives/disqus.directive.js.map" />
+        <option value="$PROJECT_DIR$/front/node_modules/reflect-metadata/Reflect.js" />
+        <option value="$PROJECT_DIR$/front/node_modules/reflect-metadata/Reflect.js.map" />
+        <option value="$PROJECT_DIR$/front/app/commons/auth.guard.js.map" />
+        <option value="$PROJECT_DIR$/front/app/commons/auth.guard.js" />
+      </list>
+    </option>
+    <option name="configsExcludedFiles">
+      <set>
+        <option value="$PROJECT_DIR$/api/build" />
+      </set>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/api/.idea/typescript-compiler.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/app/users/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="21" />
+          <folding>
+            <marker date="1487067515689" expanded="true" signature="214:2024" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="242:450" ph="..." />
+            <marker date="1487067515689" expanded="false" signature="293:310" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="344:428" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="477:1098" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="571:1087" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="606:773" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="808:994" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="1125:2015" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="1254:2004" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="1287:1457" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="1490:1679" ph="..." />
+            <marker date="1487067515689" expanded="true" signature="1712:1912" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/app/users/auth.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="31" column="46" lean-forward="true" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/app/bracelet/all.bracelet.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding>
+            <marker date="1487361570453" expanded="true" signature="388:600" ph="..." />
+            <marker date="1487361570453" expanded="true" signature="462:591" ph="..." />
+            <marker date="1487361570453" expanded="true" signature="748:790" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
