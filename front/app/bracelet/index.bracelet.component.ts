@@ -7,7 +7,9 @@ declare const DISQUSWIDGETS:any;
   selector: 'bracelet-index',
   template: `<h1>Najnowsze</h1>
   <bracelet-list [bracelets]="bracelets"></bracelet-list>
-  <a [routerLink]="['/bracelets/all', 1]">Zobacz wszystkie</a>
+  <div class="text-right">
+  <a [routerLink]="['/bracelets/all', 1]" class="btn btn-primary">Zobacz wszystkie</a>
+  </div>
   `
 })
 export class BraceletIndexComponent implements OnInit {

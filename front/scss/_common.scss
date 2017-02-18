@@ -10,6 +10,14 @@ body {
   background-color: $almostWhite;
 }
 
+.btn {
+  border: 0;
+}
+
+.btn-primary {
+  background-color: $blue;
+}
+
 
 @media (min-width: 35.5em) {
 }

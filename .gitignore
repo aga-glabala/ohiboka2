@@ -4,3 +4,5 @@ typings
 *.js.map
 .sass-cache/
 npm-debug.log
+.idea
+css
