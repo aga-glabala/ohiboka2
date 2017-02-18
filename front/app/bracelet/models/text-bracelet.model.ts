@@ -2,6 +2,7 @@ import {TextNode, PhantomTextNode, createTextNode} from './text-node.model';
 import {TextRow} from './row.model';
 import {BraceletInterface} from './bracelet.interface';
 import {User} from '../../users/user.model';
+import * as moment from 'moment';
 
 export class TextBracelet implements BraceletInterface {
     type: string;
@@ -56,6 +57,10 @@ export class TextBracelet implements BraceletInterface {
 
         this.rows.push(new TextRow(newRow, row.odd));
       }
+  }
+
+  getTime() {
+    return moment(this.created).fromNow()
   }
 
   addRowAtBegining() {

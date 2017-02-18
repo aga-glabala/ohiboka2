@@ -1,7 +1,7 @@
 bracelet-list {
   .card {
     @include card();
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     height: 200px;
 
     &:hover {
@@ -15,6 +15,17 @@ bracelet-list {
     a:hover {
       font-weight: bold;
       text-decoration: none;
+    }
+
+    .icon {
+      font-size: 150%;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 10px;
+    }
+
+    .icon:first-child {
+       padding: 0 10px 0 0;
     }
 
     preview_bracelet {
@@ -31,7 +42,7 @@ bracelet-list {
       transform: translate(-50%, -50%);
     }
 
-    .card-title {
+    .card-title,.card-details {
       color: $baseColor;
       margin: 0;
     }

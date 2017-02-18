@@ -2,6 +2,7 @@ import {StandardNode, PhantomNode, createNode} from './standard-node.model';
 import {StandardRow} from './row.model';
 import {BraceletInterface} from './bracelet.interface';
 import {User} from '../../users/user.model';
+import * as moment from 'moment';
 
 export class Bracelet implements BraceletInterface {
     name: string;
@@ -61,6 +62,10 @@ export class Bracelet implements BraceletInterface {
           }
           this.rows.push(new StandardRow(newRow, row.odd));
         }
+    }
+
+    getTime() {
+      return moment(this.created).fromNow()
     }
 
     addRowAtBegining() {

@@ -290,7 +290,7 @@ header {
 
 bracelet-list .card {
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   height: 200px; }
   bracelet-list .card .card-container {
     position: absolute;
@@ -303,7 +303,7 @@ bracelet-list .card {
     border-radius: 3px;
     padding: 15px;
     background-color: white;
-    transition: top 100ms ease-in, bottom 100ms ease-in; }
+    transition: top 100ms ease-in, bottom 100ms ease-in, left 100ms ease-in, right 100ms ease-in; }
     bracelet-list .card .card-container .card-title, bracelet-list .card .card-container .card-details {
       opacity: 0;
       transition-delay: 50ms;
@@ -312,21 +312,35 @@ bracelet-list .card {
       transform: translateY(50px); }
     bracelet-list .card .card-container .card-details {
       transform: translateY(-50px); }
+    bracelet-list .card .card-container .card-content {
+      margin-top: -20px;
+      transition: margin-top 100ms ease-in; }
   bracelet-list .card .card-container:hover {
     top: -20px;
-    bottom: -30px;
+    bottom: -50px;
+    left: -10px;
+    right: -10px;
     border: 1px solid #c4c4c4;
-    box-shadow: 2px 2px 3px #c4c4c4;
+    box-shadow: 1px 1px 10px #c4c4c4;
     z-index: 10; }
     bracelet-list .card .card-container:hover .card-title, bracelet-list .card .card-container:hover .card-details {
       opacity: 1;
       transform: translateY(0); }
+    bracelet-list .card .card-container:hover .card-content {
+      margin-top: 0; }
   bracelet-list .card:hover .card-title {
     font-weight: bold;
     text-decoration: none; }
   bracelet-list .card a:hover {
     font-weight: bold;
     text-decoration: none; }
+  bracelet-list .card .icon {
+    font-size: 150%;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px; }
+  bracelet-list .card .icon:first-child {
+    padding: 0 10px 0 0; }
   bracelet-list .card preview_bracelet {
     height: 175px;
     display: block;
@@ -337,7 +351,7 @@ bracelet-list .card {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
-  bracelet-list .card .card-title {
+  bracelet-list .card .card-title, bracelet-list .card .card-details {
     color: #555;
     margin: 0; }
 
@@ -354,7 +368,7 @@ bracelet-detail .details {
     border-radius: 3px;
     padding: 15px;
     background-color: white;
-    transition: top 100ms ease-in, bottom 100ms ease-in; }
+    transition: top 100ms ease-in, bottom 100ms ease-in, left 100ms ease-in, right 100ms ease-in; }
     bracelet-detail .details .card-container .card-title, bracelet-detail .details .card-container .card-details {
       opacity: 0;
       transition-delay: 50ms;
@@ -363,15 +377,22 @@ bracelet-detail .details {
       transform: translateY(50px); }
     bracelet-detail .details .card-container .card-details {
       transform: translateY(-50px); }
+    bracelet-detail .details .card-container .card-content {
+      margin-top: -20px;
+      transition: margin-top 100ms ease-in; }
   bracelet-detail .details .card-container:hover {
     top: -20px;
-    bottom: -30px;
+    bottom: -50px;
+    left: -10px;
+    right: -10px;
     border: 1px solid #c4c4c4;
-    box-shadow: 2px 2px 3px #c4c4c4;
+    box-shadow: 1px 1px 10px #c4c4c4;
     z-index: 10; }
     bracelet-detail .details .card-container:hover .card-title, bracelet-detail .details .card-container:hover .card-details {
       opacity: 1;
       transform: translateY(0); }
+    bracelet-detail .details .card-container:hover .card-content {
+      margin-top: 0; }
 bracelet-detail .author {
   position: relative;
   margin-bottom: 15px; }
@@ -386,7 +407,7 @@ bracelet-detail .author {
     border-radius: 3px;
     padding: 15px;
     background-color: white;
-    transition: top 100ms ease-in, bottom 100ms ease-in; }
+    transition: top 100ms ease-in, bottom 100ms ease-in, left 100ms ease-in, right 100ms ease-in; }
     bracelet-detail .author .card-container .card-title, bracelet-detail .author .card-container .card-details {
       opacity: 0;
       transition-delay: 50ms;
@@ -395,15 +416,22 @@ bracelet-detail .author {
       transform: translateY(50px); }
     bracelet-detail .author .card-container .card-details {
       transform: translateY(-50px); }
+    bracelet-detail .author .card-container .card-content {
+      margin-top: -20px;
+      transition: margin-top 100ms ease-in; }
   bracelet-detail .author .card-container:hover {
     top: -20px;
-    bottom: -30px;
+    bottom: -50px;
+    left: -10px;
+    right: -10px;
     border: 1px solid #c4c4c4;
-    box-shadow: 2px 2px 3px #c4c4c4;
+    box-shadow: 1px 1px 10px #c4c4c4;
     z-index: 10; }
     bracelet-detail .author .card-container:hover .card-title, bracelet-detail .author .card-container:hover .card-details {
       opacity: 1;
       transform: translateY(0); }
+    bracelet-detail .author .card-container:hover .card-content {
+      margin-top: 0; }
   bracelet-detail .author a {
     color: #555; }
   bracelet-detail .author:hover {

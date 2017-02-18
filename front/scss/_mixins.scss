@@ -34,7 +34,7 @@
     border-radius: $borderRadius;
     padding: $padding;
     background-color: white;
-    transition: top 100ms ease-in, bottom 100ms ease-in;
+    transition: top 100ms ease-in, bottom 100ms ease-in, left 100ms ease-in, right 100ms ease-in;
 
     .card-title, .card-details {
       opacity: 0;
@@ -49,18 +49,29 @@
     .card-details {
       transform: translateY(-50px);
     }
+
+    .card-content {
+      margin-top: -20px;
+      transition: margin-top 100ms ease-in;
+    }
   }
 
   .card-container:hover {
     top: -20px;
-    bottom: -30px;
+    bottom: -50px;
+    left: -10px;
+    right: -10px;
     border: 1px solid $darkGray;
-    box-shadow: 2px 2px 3px $darkGray;
+    box-shadow: 1px 1px 10px $darkGray;
     z-index: 10;
 
     .card-title,.card-details {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .card-content {
+      margin-top: 0;
     }
   }
 

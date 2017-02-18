@@ -10,6 +10,7 @@ export interface BraceletInterface {
   created: Date;
   author: User;
 
+  getTime(): string;
   addRowAtBegining(): void;
   addRowAtEnd(): void;
   removeFirstRow(): boolean;

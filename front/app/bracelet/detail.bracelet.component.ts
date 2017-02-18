@@ -3,7 +3,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {BraceletService} from '../bracelet/bracelet.service';
 import {BraceletInterface} from '../bracelet/models/bracelet.interface';
 import { AuthService } from '../users/auth.service';
-import * as moment from 'moment';
 
 declare const DISQUSWIDGETS:any;
 
@@ -29,7 +28,7 @@ declare const DISQUSWIDGETS:any;
         <h3>Szczegóły</h3>
         <div>Liczba nitek: <strong>{{ bracelet.getStringsNumber() }}</strong></div>
         <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
-        <div>Data dodania: <strong>{{ getTime() }}</strong></div>
+        <div>Data dodania: <strong>{{ bracelet.getTime() }}</strong></div>
         <div>Komentarzy: <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id"></span></div>
           <a *ngIf="user && user.id == bracelet.author.id" class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
         <div *ngIf="user && user.id == bracelet.author.id"><a (click)="delete()">Usuń</a></div>
@@ -61,10 +60,6 @@ export class BraceletDetailComponent implements OnInit, OnDestroy {
                               }
                             });
      });
-  }
-
-  getTime() {
-    return moment(this.bracelet.created).fromNow()
   }
 
   ngOnInit() {
