@@ -31,6 +31,7 @@ declare const DISQUSWIDGETS:any;
         <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
         <div>Data dodania: <strong>{{ getTime() }}</strong></div>
         <div>Komentarzy: <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id"></span></div>
+          <a *ngIf="user && user.id == bracelet.author.id" class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
         <div *ngIf="user && user.id == bracelet.author.id"><a (click)="delete()">Usuń</a></div>
       </div>
       <div class="col-xs-12">

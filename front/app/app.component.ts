@@ -11,11 +11,14 @@ declare const FB:any;
     <div class="container">
       <div class="row">
         <h1 class="col-md-5"><span class="sr-only">Ohiboka</span></h1>
-        <nav class="col-md-7 text-md-right">
+        <nav class="col-md-7 text-right">
           <a [routerLink]="['/bracelet/new']">New bracelet</a>
           <a [routerLink]="['/bracelets/index']">Bracelets</a>
           <a *ngIf="!userLogged" [routerLink]="['/user/login']">Zaloguj się</a>
-          <a *ngIf="userLogged" (click)="logout()">Wyloguj się</a>
+          <a *ngIf="userLogged" (click)="logout()">
+            Wyloguj się
+            <span class="user-icon ion-ios-person"></span>
+          </a>
         </nav>
       </div>
     </div>

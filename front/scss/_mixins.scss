@@ -21,8 +21,48 @@
 }
 
 @mixin card {
-  border: 1px solid $gray;
-  box-shadow: 2px 2px 3px #ededed;
-  border-radius: $borderRadius;
-  padding: 10px;
+  position: relative;
+
+  .card-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid $gray;
+    box-shadow: 2px 2px 3px $gray;
+    border-radius: $borderRadius;
+    padding: $padding;
+    background-color: white;
+    transition: top 100ms ease-in, bottom 100ms ease-in;
+
+    .card-title, .card-details {
+      opacity: 0;
+      transition-delay: 50ms;
+      transition: opacity 100ms ease-in, transform 100ms ease-in;
+    }
+
+    .card-title {
+      transform: translateY(50px);
+    }
+
+    .card-details {
+      transform: translateY(-50px);
+    }
+  }
+
+  .card-container:hover {
+    top: -20px;
+    bottom: -30px;
+    border: 1px solid $darkGray;
+    box-shadow: 2px 2px 3px $darkGray;
+    z-index: 10;
+
+    .card-title,.card-details {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
 }

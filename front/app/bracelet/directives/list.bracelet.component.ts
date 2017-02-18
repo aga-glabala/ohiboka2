@@ -8,12 +8,13 @@ declare const DISQUSWIDGETS:any;
   <div class="row">
     <div class="col-xs-1 col-md-6 col-lg-4" *ngFor="let bracelet of bracelets">
       <div class="card card-block">
-        <a class="card-link" [routerLink]="['/bracelet/detail', bracelet.id]">
-          <preview_bracelet class="vertical" [bracelet]="bracelet" [readonly]="true"></preview_bracelet>
+        <a [routerLink]="['/bracelet/detail', bracelet.id]" class="card-container">
           <h4 class="card-title">{{bracelet.name}}</h4>
-          <a *ngIf="user && user.id == bracelet.author.id" class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
-          <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id">Komentarze </span>
-          <span class="author" >{{bracelet.author.getUsername()}}</span>
+          <preview_bracelet class="vertical" [bracelet]="bracelet" [readonly]="true"></preview_bracelet>
+          <div class="card-details">
+            <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id">Komentarze </span>
+            <span class="author" >{{bracelet.author.getUsername()}}</span>
+          </div>
         </a>
       </div>
     </div>

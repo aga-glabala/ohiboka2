@@ -13,133 +13,8 @@
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Proza Libre", sans-serif; }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0; }
-
-.sr-only-focusable:active, .sr-only-focusable:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto; }
-
-.hide {
-  display: none !important; }
-
-.text-justify {
-  text-align: justify !important; }
-
-.text-nowrap {
-  white-space: nowrap !important; }
-
-.text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
-
-.text-xs-left {
-  text-align: left !important; }
-
-.text-xs-right {
-  text-align: right !important; }
-
-.text-xs-center {
-  text-align: center !important; }
-
-@media (min-width: 35.5em) {
-  .text-sm-left {
-    text-align: left !important; }
-
-  .text-sm-right {
-    text-align: right !important; }
-
-  .text-sm-center {
-    text-align: center !important; } }
-@media (min-width: 48em) {
-  .text-md-left {
-    text-align: left !important; }
-
-  .text-md-right {
-    text-align: right !important; }
-
-  .text-md-center {
-    text-align: center !important; } }
-@media (min-width: 64em) {
-  .text-lg-left {
-    text-align: left !important; }
-
-  .text-lg-right {
-    text-align: right !important; }
-
-  .text-lg-center {
-    text-align: center !important; } }
-@media (min-width: 80em) {
-  .text-xl-left {
-    text-align: left !important; }
-
-  .text-xl-right {
-    text-align: right !important; }
-
-  .text-xl-center {
-    text-align: center !important; } }
-.text-lowercase {
-  text-transform: lowercase !important; }
-
-.text-uppercase {
-  text-transform: uppercase !important; }
-
-.text-capitalize {
-  text-transform: capitalize !important; }
-
-.pure-g > div {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.content-box {
-  padding: 1em; }
-
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px; }
-
-.container::after {
-  content: "";
-  display: table;
-  clear: both; }
-
-@media (min-width: 35.5em) {
-  .container {
-    max-width: 576px; } }
-@media (min-width: 48em) {
-  .container {
-    max-width: 720px; } }
-@media (min-width: 64em) {
-  .container {
-    max-width: 940px; } }
-@media (min-width: 80em) {
-  .container {
-    max-width: 1140px; } }
-.container-fluid {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px; }
-
-.container-fluid::after {
-  content: "";
-  display: table;
-  clear: both; }
+body {
+  background-color: #f4f4f4; }
 
 button {
   border: 1px solid #dedede;
@@ -384,8 +259,8 @@ color-picker {
 
 header {
   background: url("../assets/imgs/bg.png");
-  padding: 30px 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75); }
+  padding: 15px 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.75); }
   header h1 {
     background: url("../assets/imgs/ohiboka.png") no-repeat;
     height: 111px;
@@ -398,28 +273,62 @@ header {
       margin-left: 10px;
       color: white;
       text-transform: uppercase;
+      font-size: 18px;
       text-decoration: none; }
+      header nav a .user-icon {
+        font-size: 170%;
+        color: #163860;
+        background-color: white;
+        border-radius: 50%;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        vertical-align: middle; }
     header nav a:hover {
       text-decoration: underline; }
 
 bracelet-list .card {
-  border: 1px solid #dedede;
-  box-shadow: 2px 2px 3px #ededed;
-  border-radius: 3px;
-  padding: 10px;
+  position: relative;
   margin-bottom: 15px;
   height: 200px; }
-  bracelet-list .card:hover {
-    box-shadow: 2px 2px 8px #e7e7e7;
-    border: 1px solid #d8d8d8; }
-    bracelet-list .card:hover .card-title {
-      font-weight: bold;
-      text-decoration: none; }
+  bracelet-list .card .card-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #dedede;
+    box-shadow: 2px 2px 3px #dedede;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: white;
+    transition: top 100ms ease-in, bottom 100ms ease-in; }
+    bracelet-list .card .card-container .card-title, bracelet-list .card .card-container .card-details {
+      opacity: 0;
+      transition-delay: 50ms;
+      transition: opacity 100ms ease-in, transform 100ms ease-in; }
+    bracelet-list .card .card-container .card-title {
+      transform: translateY(50px); }
+    bracelet-list .card .card-container .card-details {
+      transform: translateY(-50px); }
+  bracelet-list .card .card-container:hover {
+    top: -20px;
+    bottom: -30px;
+    border: 1px solid #c4c4c4;
+    box-shadow: 2px 2px 3px #c4c4c4;
+    z-index: 10; }
+    bracelet-list .card .card-container:hover .card-title, bracelet-list .card .card-container:hover .card-details {
+      opacity: 1;
+      transform: translateY(0); }
+  bracelet-list .card:hover .card-title {
+    font-weight: bold;
+    text-decoration: none; }
   bracelet-list .card a:hover {
     font-weight: bold;
     text-decoration: none; }
   bracelet-list .card preview_bracelet {
-    height: 150px;
+    height: 175px;
     display: block;
     position: relative;
     overflow: hidden; }
@@ -433,16 +342,68 @@ bracelet-list .card {
     margin: 0; }
 
 bracelet-detail .details {
-  border: 1px solid #dedede;
-  box-shadow: 2px 2px 3px #ededed;
-  border-radius: 3px;
-  padding: 10px; }
+  position: relative; }
+  bracelet-detail .details .card-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #dedede;
+    box-shadow: 2px 2px 3px #dedede;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: white;
+    transition: top 100ms ease-in, bottom 100ms ease-in; }
+    bracelet-detail .details .card-container .card-title, bracelet-detail .details .card-container .card-details {
+      opacity: 0;
+      transition-delay: 50ms;
+      transition: opacity 100ms ease-in, transform 100ms ease-in; }
+    bracelet-detail .details .card-container .card-title {
+      transform: translateY(50px); }
+    bracelet-detail .details .card-container .card-details {
+      transform: translateY(-50px); }
+  bracelet-detail .details .card-container:hover {
+    top: -20px;
+    bottom: -30px;
+    border: 1px solid #c4c4c4;
+    box-shadow: 2px 2px 3px #c4c4c4;
+    z-index: 10; }
+    bracelet-detail .details .card-container:hover .card-title, bracelet-detail .details .card-container:hover .card-details {
+      opacity: 1;
+      transform: translateY(0); }
 bracelet-detail .author {
-  border: 1px solid #dedede;
-  box-shadow: 2px 2px 3px #ededed;
-  border-radius: 3px;
-  padding: 10px;
+  position: relative;
   margin-bottom: 15px; }
+  bracelet-detail .author .card-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #dedede;
+    box-shadow: 2px 2px 3px #dedede;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: white;
+    transition: top 100ms ease-in, bottom 100ms ease-in; }
+    bracelet-detail .author .card-container .card-title, bracelet-detail .author .card-container .card-details {
+      opacity: 0;
+      transition-delay: 50ms;
+      transition: opacity 100ms ease-in, transform 100ms ease-in; }
+    bracelet-detail .author .card-container .card-title {
+      transform: translateY(50px); }
+    bracelet-detail .author .card-container .card-details {
+      transform: translateY(-50px); }
+  bracelet-detail .author .card-container:hover {
+    top: -20px;
+    bottom: -30px;
+    border: 1px solid #c4c4c4;
+    box-shadow: 2px 2px 3px #c4c4c4;
+    z-index: 10; }
+    bracelet-detail .author .card-container:hover .card-title, bracelet-detail .author .card-container:hover .card-details {
+      opacity: 1;
+      transform: translateY(0); }
   bracelet-detail .author a {
     color: #555; }
   bracelet-detail .author:hover {

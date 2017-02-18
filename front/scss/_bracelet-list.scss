@@ -5,8 +5,6 @@ bracelet-list {
     height: 200px;
 
     &:hover {
-      box-shadow: 2px 2px 8px darken(#ededed, 2.5);
-      border: 1px solid darken($gray, 2.5);
 
       .card-title {
         font-weight: bold;
@@ -20,7 +18,7 @@ bracelet-list {
     }
 
     preview_bracelet {
-      height: 150px;
+      height: 175px;
       display: block;
       position: relative;
       overflow: hidden;
