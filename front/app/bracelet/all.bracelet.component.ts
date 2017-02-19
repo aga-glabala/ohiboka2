@@ -3,17 +3,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BraceletService } from './bracelet.service';
 import { BraceletInterface } from './models/bracelet.interface';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/switchMap';
 declare const DISQUSWIDGETS:any;
 
 @Component({
   selector: 'bracelet-all',
   template: `<h1>Wszystkie bransoletki</h1>
-  <div>
-    Sortuj po:
-    <select (change)="changeSorting($event.target.value)">
-      <option value="newest">Najnowsze najpierw</option>
-      <option value="oldest">Najstarsze najpierw</option>
-    </select>
+  <div class="filter">
+    <span class="filter-label">Sortuj po: </span>
+    <span class="btn-group" role="group" aria-label="sort by">
+      <a class="btn" [ngClass]="{'btn-default': sortby=='oldest', 'btn-info': sortby=='newest'}" [routerLink]="['/bracelets/all/', 1, {sortby: 'newest'}]">Najnowsze</a>
+      <a class="btn" [ngClass]="{'btn-default': sortby=='newest', 'btn-info': sortby=='oldest'}" [routerLink]="['/bracelets/all/', 1, {sortby: 'oldest'}]">Najstarsze</a>
+    </span>
   </div>
   <bracelet-list [bracelets]="bracelets"></bracelet-list>
   <pagination *ngIf="count" [itemsCount]="count" [itemsForPage]="18" [activePage]="page"
@@ -27,10 +28,12 @@ export class BraceletAllComponent implements OnInit {
   count: number;
   commentsLoaded : boolean = false;
   page: number;
+  sortby: string;
 
   ngOnInit() {
-    Observable.zip(this.route.params, this.route.queryParams).switchMap((params : any[]) => {
-      return this.BraceletService.getList(params[0].page, 18, params[1].sortby)
+    this.route.params.switchMap((params : any) => {
+      this.sortby = params.sortby;
+      return this.BraceletService.getList(params.page, 18, params.sortby)
     }).subscribe(
        data => {
          this.count = data.count;

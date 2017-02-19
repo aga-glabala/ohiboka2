@@ -7,7 +7,7 @@ bracelet-detail {
     margin-bottom: 15px;
 
     a {
-      color: $baseColor;
+      color: $text;
     }
     &:hover {
       text-decoration: underline;
@@ -17,7 +17,7 @@ bracelet-detail {
       font-size: 40px;
       padding: 20px;
       display: inline-block;
-      background-color: transparentize($baseColor, 0.75);
+      background-color: transparentize($text, 0.75);
       border-radius: 50%;
     }
 
