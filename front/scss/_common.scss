@@ -18,6 +18,29 @@ body {
   background-color: $primary;
 }
 
+pagination ul.pagination {
+  display: block;
+  text-align: center;
+
+  li {
+    display: inline-block;
+  }
+
+  li a {
+    border:0;
+    border-radius: $borderRadius;
+    margin: $padding;
+    color: $primary;
+  }
+
+  li.active a {
+    background-color: $primary-accent;
+    &:hover, &:active, &:focus {
+      background-color: $primary-accent-hover;
+    }
+  }
+}
+
 
 @media (min-width: 35.5em) {
 }

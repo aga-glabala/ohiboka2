@@ -18,7 +18,7 @@ declare const DISQUSWIDGETS:any;
   </div>
   <bracelet-list [bracelets]="bracelets"></bracelet-list>
   <pagination *ngIf="count" [itemsCount]="count" [itemsForPage]="18" [activePage]="page"
-         [url]="generateURL"></pagination>
+         [url]="generateURL()"></pagination>
   `
 })
 export class BraceletAllComponent implements OnInit {
@@ -33,6 +33,7 @@ export class BraceletAllComponent implements OnInit {
   ngOnInit() {
     this.route.params.switchMap((params : any) => {
       this.sortby = params.sortby;
+      this.page = params.page;
       return this.BraceletService.getList(params.page, 18, params.sortby)
     }).subscribe(
        data => {
@@ -42,11 +43,10 @@ export class BraceletAllComponent implements OnInit {
      );
   }
 
-  changeSorting(sortby) {
-    this.router.navigate(['/bracelets/all/', 1], {queryParams: { 'sortby': sortby }});
-  }
-
-  generateURL(i) {
-    return "/bracelets/all/" + i;
+  generateURL() {
+    let that = this;
+    return function(i) {
+      return ["/bracelets/all/", i, {sortby: that.sortby}];
+    }
   }
 }
