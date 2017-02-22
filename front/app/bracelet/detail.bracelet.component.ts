@@ -12,26 +12,32 @@ declare const DISQUSWIDGETS:any;
     <h2>{{ bracelet.name }}</h2>
     <div class="row">
       <div class="col-md-8">
-        <preview_bracelet [bracelet]="bracelet"></preview_bracelet>
+        <div class="card">
+          <preview_bracelet [bracelet]="bracelet" class="card-container" rows="48"></preview_bracelet> 
+        </div>
         <bracelet [bracelet]="bracelet" [ngClass]="{'text': bracelet.isTextType()}"></bracelet>
       </div>
-      <div class="col-md-4 author">
-        <div class="row"><a href="#todo">
-          <div class="col-md-4 icon"><span class="glyphicon glyphicon-user"></span></div>
-          <div class="col-md-8 username-container">
-            <p class="username">{{bracelet.author.getUsername()}}</p>
-            <p>Zobacz wszystkie bransoletki tego autora</p>
+      <div class="col-md-4">
+        <div class="author">
+          <div class="row card-container"><a href="#todo">
+            <div class="col-md-4 icon"><span class="glyphicon glyphicon-user"></span></div>
+            <div class="col-md-8 username-container">
+              <p class="username">{{bracelet.author.getUsername()}}</p>
+              <p>Zobacz wszystkie bransoletki tego autora</p>
+            </div>
+          </a></div>
+        </div>
+        <div class="details">
+          <div class="card-container">
+            <h3>Szczegóły</h3>
+            <div>Liczba nitek: <strong>{{ bracelet.getStringsNumber() }}</strong></div>
+            <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
+            <div>Data dodania: <strong>{{ bracelet.getTime() }}</strong></div>
+            <div>Komentarzy: <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id"></span></div>
+              <a *ngIf="user && user.id == bracelet.author.id" class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
+            <div *ngIf="user && user.id == bracelet.author.id"><a (click)="delete()">Usuń</a></div>
           </div>
-        </a></div>
-      </div>
-      <div class="col-md-4 details">
-        <h3>Szczegóły</h3>
-        <div>Liczba nitek: <strong>{{ bracelet.getStringsNumber() }}</strong></div>
-        <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
-        <div>Data dodania: <strong>{{ bracelet.getTime() }}</strong></div>
-        <div>Komentarzy: <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id"></span></div>
-          <a *ngIf="user && user.id == bracelet.author.id" class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
-        <div *ngIf="user && user.id == bracelet.author.id"><a (click)="delete()">Usuń</a></div>
+        </div>
       </div>
       <div class="col-xs-12">
         <disqus id="disqus_thread" braceletName="{{bracelet.name}}" braceletId="{{bracelet.id}}"></disqus>

@@ -24,11 +24,6 @@
   position: relative;
 
   .card-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     border: 1px solid $gray;
     box-shadow: 2px 2px 3px $gray;
     border-radius: $borderRadius;
@@ -55,6 +50,16 @@
       transition: margin-top 100ms ease-in;
     }
   }
+}
+
+@mixin card-hover {
+  .card-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 
   .card-container:hover {
     top: -20px;
@@ -74,6 +79,7 @@
       margin-top: 0;
     }
   }
-
-
+}
+.card {
+  @include card();
 }

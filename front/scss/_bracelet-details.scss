@@ -1,10 +1,21 @@
 bracelet-detail {
+
+  preview_bracelet {
+    display: block;
+  }
+
+  bracelet {
+    margin: 2*$padding 0;
+  }
+
   .details {
     @include card();
+    margin: ($padding) (-$padding);
   }
+
   .author {
     @include card();
-    margin-bottom: 15px;
+    margin-bottom: $padding;
 
     a {
       color: $text;

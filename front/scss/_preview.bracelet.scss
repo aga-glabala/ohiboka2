@@ -1,8 +1,33 @@
 $column-width: 20px;
 
 preview_bracelet {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: $padding;
+
   .preview-container {
     white-space: nowrap;
+    overflow: hidden;
+    margin: (0) (-$padding);
+  }
+
+  .shadow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    z-index: 2;
+    box-shadow: 0 0 8px 4px white;
+
+    &.shadow--before {
+      left: 0;
+      right: auto;
+    }
+
+    &.shadow--after {
+      right: 0;
+      left: auto;
+    }
   }
 
   .bracelet__row {

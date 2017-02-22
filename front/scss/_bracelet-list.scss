@@ -1,6 +1,7 @@
 bracelet-list {
   .card {
     @include card();
+    @include card-hover();
     margin-bottom: 30px;
     height: 200px;
 
