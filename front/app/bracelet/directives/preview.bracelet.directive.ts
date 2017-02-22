@@ -22,9 +22,14 @@ export class PreviewBraceletComponent {
   ngOnInit() {
     if(this.rows && this.rows > 0) {
       this.innerRows = [];
+      let j =  0;
 
       for(let i = 0; i < this.rows; i++) {
-        this.innerRows[i] = this.bracelet.rows[i % this.bracelet.rows.length];
+        let row = this.bracelet.rows[i % this.bracelet.rows.length];
+        if(!row.isPhantom()) {
+          this.innerRows[j] = row;
+          j++;
+        }
       }
     } else {
       this.innerRows = this.bracelet.rows;

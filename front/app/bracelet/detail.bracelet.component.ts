@@ -30,12 +30,12 @@ declare const DISQUSWIDGETS:any;
         <div class="details">
           <div class="card-container">
             <h3>Szczegóły</h3>
-            <div>Liczba nitek: <strong>{{ bracelet.getStringsNumber() }}</strong></div>
-            <div>Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
-            <div>Data dodania: <strong>{{ bracelet.getTime() }}</strong></div>
-            <div>Komentarzy: <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id"></span></div>
-              <a *ngIf="user && user.id == bracelet.author.id" class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]">Edit</a>
-            <div *ngIf="user && user.id == bracelet.author.id"><a (click)="delete()">Usuń</a></div>
+            <div><span class="icon ion-levels"></span> Liczba nitek: <strong>{{ bracelet.getStringsNumber() }}</strong></div>
+            <div><span class="icon ion-ios-color-filter-outline"></span> Liczba kolorów: <strong>{{ bracelet.getColorsNumber() }}</strong></div>
+            <div><span class="icon ion-ios-clock-outline"></span>  Data dodania: <strong>{{ bracelet.getTime() }}</strong></div>
+            <div><span class="icon ion-ios-chatboxes-outline"></span> Komentarzy: <span class="disqus-comment-count" [attr.data-disqus-identifier]="'bracelet' + bracelet.id"></span></div>
+            <div *ngIf="user && user.id == bracelet.author.id"><a class="card-link" [routerLink]="['/bracelet/edit', bracelet.id]"><span class="icon ion-ios-compose-outline"></span> Edit</a></div>
+            <div *ngIf="user && user.id == bracelet.author.id"><a class="card-link" (click)="delete()"><span class="icon ion-ios-trash-outline"></span> Usuń</a></div>
           </div>
         </div>
       </div>

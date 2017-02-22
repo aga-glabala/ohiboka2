@@ -3,6 +3,7 @@ import {TextNode} from './text-node.model';
 
 export interface Row {
   toJson() : {};
+  isPhantom() : boolean;
 }
 
 export class StandardRow implements Row {
@@ -24,6 +25,13 @@ export class StandardRow implements Row {
 
     return data;
   }
+
+  isPhantom() {
+    if(this.knots && this.knots.length > 1) {
+      return this.knots[1].isPhantom();
+    }
+    return true;
+  }
 }
 
 export class TextRow implements Row {
@@ -44,5 +52,12 @@ export class TextRow implements Row {
     }
 
     return data;
+  }
+
+  isPhantom() {
+    if(this.knots && this.knots.length > 1) {
+      return this.knots[1].isPhantom();
+    }
+    return true;
   }
 }

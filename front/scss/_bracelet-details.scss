@@ -11,6 +11,10 @@ bracelet-detail {
   .details {
     @include card();
     margin: ($padding) (-$padding);
+
+    h3  {
+      margin-top: 0;
+    }
   }
 
   .author {

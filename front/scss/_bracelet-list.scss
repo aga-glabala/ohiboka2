@@ -18,13 +18,6 @@ bracelet-list {
       text-decoration: none;
     }
 
-    .icon {
-      font-size: 150%;
-      display: inline-block;
-      vertical-align: middle;
-      padding: 0 10px;
-    }
-
     .icon:first-child {
        padding: 0 10px 0 0;
     }
@@ -46,6 +39,10 @@ bracelet-list {
     .card-title,.card-details {
       color: $text;
       margin: 0;
+    }
+
+    .card-details {
+      margin-bottom: $padding;
     }
 
   }
