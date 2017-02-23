@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from './users/auth.service';
 import * as moment from 'moment';
-import 'momentLocale';
+// FIXME import 'momentLocale';
 
 declare const FB:any;
 @Component({
