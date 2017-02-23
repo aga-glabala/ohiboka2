@@ -19,7 +19,7 @@ declare const DISQUSWIDGETS:any;
       </div>
       <div class="col-md-4">
         <div class="author">
-          <div class="row card-container"><a href="#todo">
+          <div class="row card-container"><a href="#todo" [routerLink]="['/bracelets/user', bracelet.author.id, 1]">
             <div class="col-md-4 icon"><span class="glyphicon glyphicon-user"></span></div>
             <div class="col-md-8 username-container">
               <p class="username">{{bracelet.author.getUsername()}}</p>

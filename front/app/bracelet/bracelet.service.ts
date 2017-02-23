@@ -48,6 +48,20 @@ export class BraceletService {
                     });
   }
 
+  getUsersBracelets(userId: string, page: number = 1, limit: number = 18, sortby: string = "newest") {
+    return this.http.get(AppService.API + `bracelets/users?page=${page}&limit=${limit}&sortby=${sortby}&userId=${userId}`)
+                    .map(this.extractData)
+                    .map(data => {
+                      var bracelets = this.createFromArray(data.bracelets);
+                      var count = data.count;
+                      return {
+                        bracelets: bracelets,
+                        count: count,
+                        user: User.createUser(data.user)
+                      }
+                    });
+  }
+
   saveBracelet(bracelet: BraceletInterface) {
     var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let body = JSON.stringify(bracelet.toJson());

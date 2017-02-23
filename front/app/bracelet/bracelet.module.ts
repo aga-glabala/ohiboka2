@@ -13,6 +13,7 @@ import { NodeComponent } from './directives/node.directive';
 import { PreviewBraceletComponent }   from './directives/preview.bracelet.directive';
 import { BraceletComponent } from './directives/bracelet.directive';
 import { DisqusComponent } from './directives/disqus.directive';
+import { UsersBraceletComponent } from './users-bracelet.bracelet.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -28,6 +29,10 @@ import { DisqusComponent } from './directives/disqus.directive';
       {
         path: 'bracelet/detail/:id',
         component: BraceletDetailComponent
+      },
+      {
+        path: 'bracelets/user/:userId/:page',
+        component: UsersBraceletComponent
       }
     ]),
     HttpModule,
@@ -39,6 +44,7 @@ import { DisqusComponent } from './directives/disqus.directive';
     BraceletListComponent,
     BraceletAllComponent,
     BraceletComponent,
+    UsersBraceletComponent,
     PreviewBraceletComponent,
     DisqusComponent,
     NodeComponent

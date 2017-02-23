@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://mo1062_bracelet:Qs2fXUc4Qmj1qdCp8Pp5@mongo10.mydevil.net:27017/mo1062_bracelet'); // connect to our database
-
+mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -46,6 +46,9 @@ var braceletService = new BraceletService();
 
 router.route('/bracelets')
   .get(braceletService.all);
+
+router.route('/bracelets/users')
+  .get(braceletService.usersBracelet);
 
 router.route('/bracelets/:bracelet_id')
   .get(braceletService.one);
