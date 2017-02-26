@@ -100,6 +100,10 @@ export class StandardNode implements Node {
       return;
     }
 
+    if(!this.nodeColor) {
+      return '#ff0000';
+    }
+
     var c = this.nodeColor.substring(1);
     var rgb = parseInt(c, 16);
     var r = (rgb >> 16) & 0xff;

@@ -29,7 +29,12 @@ export class Bracelet implements BraceletInterface {
         var new_row = [];
 
         var odd = row.odd ? 0 : -1;
-        var extra = odd && this.strings.length/2 % 2 == 0 ? 1 : 0;
+        var extra = 0;
+        if(!row.odd && this.strings.length / 2 % 2 == 0) {
+          extra = 1;
+        } else if(!row.odd && this.strings.length / 2 % 2 != 0) {
+          extra = 2;
+        }
 
         for(var j=0; j<this.strings.length/2 + extra; j++) {
           var tmp_node = createNode('phantom', undefined, undefined);
@@ -42,8 +47,7 @@ export class Bracelet implements BraceletInterface {
           var prevRow = this.rows[i];
           var newRow = [];
           var row = braceletInfo.rows[i];
-          var odd = row.odd ? 1 : 0;
-          if(odd) {
+          if(row.odd) {
             var tmp_node = createNode('phantom', undefined, prevRow.knots[0]);
             PhantomNode.innerConstructorPhantom(tmp_node, undefined, prevRow.knots[0].stringAfterLeft);
             newRow.push(tmp_node);
@@ -54,7 +58,7 @@ export class Bracelet implements BraceletInterface {
             newRow.push(node);
           }
 
-          if(!odd && this.strings.length % 2 > 0 || odd && this.strings.length % 2 == 0) {
+          if(!row.odd && this.strings.length % 2 > 0 || row.odd && this.strings.length % 2 == 0) {
             var tmp_node = createNode('phantom', prevRow.knots[prevRow.knots.length - 1], undefined);
             PhantomNode.innerConstructorPhantom(tmp_node, prevRow.knots[prevRow.knots.length - 1].stringAfterRight, undefined);
 
@@ -62,6 +66,7 @@ export class Bracelet implements BraceletInterface {
           }
           this.rows.push(new StandardRow(newRow, row.odd));
         }
+        console.log(this.rows)
     }
 
     getTime() {

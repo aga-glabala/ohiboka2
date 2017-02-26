@@ -19,7 +19,9 @@ export class TextBracelet implements BraceletInterface {
       this.type = braceletInfo.type;
       this.strings = braceletInfo.strings;
       this.id = braceletInfo._id;
-      this.author = User.createUser({name: braceletInfo.author.name, id: braceletInfo.author.id});
+      if(braceletInfo.author) {
+        this.author = User.createUser({name: braceletInfo.author.name, id: braceletInfo.author.id});
+      }
       this.rows = [];
 
       var row = braceletInfo.rows[0];
@@ -316,6 +318,10 @@ export class TextBracelet implements BraceletInterface {
 
     public getStringsNumber() : number {
       return this.strings.length;
+    }
+
+    public getColorsNumber() : number {
+      return this.getColors().length;
     }
 
     isTextType() : boolean {
