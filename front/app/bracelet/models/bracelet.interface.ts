@@ -25,4 +25,5 @@ export interface BraceletInterface {
 
   toJson(): {};
   isTextType(): {};
+  getLongerBracelet(rows: number): BraceletInterface;
 }

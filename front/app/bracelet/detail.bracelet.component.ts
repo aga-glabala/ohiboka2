@@ -84,7 +84,7 @@ export class BraceletDetailComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewChecked() {
-    if(document.getElementsByClassName('disqus-comment-count').length > 0 && !this.commentsLoaded) {
+    if(document.getElementsByClassName('disqus-comment-count').length > 0 && !this.commentsLoaded && DISQUSWIDGETS) {
       DISQUSWIDGETS.getCount({reset: true});
       this.commentsLoaded = true;
     }

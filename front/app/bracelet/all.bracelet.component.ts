@@ -32,7 +32,7 @@ export class BraceletAllComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.switchMap((params : any) => {
-      this.sortby = params.sortby;
+      this.sortby = params.sortby ? params.sortby : "newest";
       this.page = params.page;
       return this.BraceletService.getList(params.page, 18, params.sortby)
     }).subscribe(

@@ -13,6 +13,7 @@ export class Bracelet implements BraceletInterface {
     type: string;
     created: Date;
     author: User;
+    private origRows;
 
     constructor(braceletInfo:any) {
         this.name = braceletInfo.name;
@@ -21,6 +22,7 @@ export class Bracelet implements BraceletInterface {
         this.type = braceletInfo.type;
         this.rows = [];
         this.created = braceletInfo.created;
+        this.origRows = braceletInfo.rows;
         if(braceletInfo.author) {
           this.author = User.createUser({name: braceletInfo.author.name, id: braceletInfo.author.id});
         }
@@ -416,5 +418,9 @@ export class Bracelet implements BraceletInterface {
 
     isTextType() : boolean {
       return false;
+    }
+
+    getLongerBracelet(rows: number) {
+      return this;
     }
   }
