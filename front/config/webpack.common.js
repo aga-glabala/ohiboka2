@@ -24,6 +24,11 @@ module.exports = {
         } , 'angular2-template-loader']
       },
       {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: "source-map-loader"
+      },
+      {
         test: /\.html$/,
         loader: 'html-loader'
       },
