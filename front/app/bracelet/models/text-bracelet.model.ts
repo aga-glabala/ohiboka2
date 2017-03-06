@@ -2,6 +2,7 @@ import {TextNode, PhantomTextNode, createTextNode} from './text-node.model';
 import {TextRow} from './row.model';
 import {BraceletInterface} from './bracelet.interface';
 import {User} from '../../users/user.model';
+import {BraceletService} from "../bracelet.service";
 import * as moment from 'moment';
 
 export class TextBracelet implements BraceletInterface {
@@ -20,6 +21,7 @@ export class TextBracelet implements BraceletInterface {
       this.type = braceletInfo.type;
       this.strings = braceletInfo.strings;
       this.id = braceletInfo._id;
+      this.origRows = braceletInfo.rows;
       if(braceletInfo.author) {
         this.author = User.createUser({name: braceletInfo.author.name, id: braceletInfo.author.id});
       }
@@ -330,6 +332,13 @@ export class TextBracelet implements BraceletInterface {
     }
 
     getLongerBracelet(rows: number) {
-      return this;
+      let braceletInfo = [];
+      let origLen = this.origRows.length;
+
+      for(var i = 0; braceletInfo.length <= rows; i++) {
+        braceletInfo.push(this.origRows[i % origLen]);
+      }
+
+      return BraceletService.create({rows: braceletInfo, strings: this.strings, type: "text"});
     }
 }

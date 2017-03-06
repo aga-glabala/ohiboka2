@@ -3,6 +3,7 @@ import {StandardRow} from './row.model';
 import {BraceletInterface} from './bracelet.interface';
 import {User} from '../../users/user.model';
 import * as moment from 'moment';
+import {BraceletService} from "../bracelet.service";
 
 export class Bracelet implements BraceletInterface {
     name: string;
@@ -68,7 +69,6 @@ export class Bracelet implements BraceletInterface {
           }
           this.rows.push(new StandardRow(newRow, row.odd));
         }
-        console.log(this.rows)
     }
 
     getTime() {
@@ -421,6 +421,13 @@ export class Bracelet implements BraceletInterface {
     }
 
     getLongerBracelet(rows: number) {
-      return this;
+      let braceletInfo = [];
+      let origLen = this.origRows.length;
+
+      for(var i = 0; braceletInfo.length <= rows; i++) {
+        braceletInfo.push(this.origRows[i % origLen]);
+      }
+
+      return BraceletService.create({rows: braceletInfo, strings: this.strings, type: "standard"});
     }
   }

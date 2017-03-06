@@ -2,8 +2,7 @@
   "name": "ohiboka2",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port 8080",
-
+    "start": "webpack-dev-server --inline --progress --port 3000",
     "test": "karma start",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
@@ -25,6 +24,7 @@
     "@angular/upgrade": "~2.1.0",
     "angular-in-memory-web-api": "~0.1.5",
     "angular2-cookie": "^1.2.5",
+    "angular2-disqus": "^5.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "moment": "^2.17.1",

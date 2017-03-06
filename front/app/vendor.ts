@@ -8,6 +8,7 @@ import '@angular/router';
 import 'angular2-cookie/core';
 import 'angular2-cookie/services/cookies.service';
 import 'moment';
+import 'angular2-disqus';
 // RxJS
 import 'rxjs';
 import 'rxjs/BehaviorSubject';

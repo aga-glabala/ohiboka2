@@ -9,6 +9,7 @@ import { BraceletModule }   from './bracelet/bracelet.module';
 import { EditorModule }   from './editor/editor.module';
 import { UsersModule }   from './users/users.module';
 import { CommonsModule }   from './commons/commons.module';
+import { DisqusModule } from 'angular2-disqus';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { CommonsModule }   from './commons/commons.module';
     EditorModule,
     UsersModule,
     CommonsModule,
+    DisqusModule,
     RouterModule.forRoot([
       {
         path: '',

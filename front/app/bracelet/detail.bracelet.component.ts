@@ -40,7 +40,7 @@ declare const DISQUSWIDGETS:any;
         </div>
       </div>
       <div class="col-xs-12">
-        <disqus id="disqus_thread" braceletName="{{bracelet.name}}" braceletId="{{bracelet.id}}"></disqus>
+        <disqus braceletName="{{bracelet.name}}" braceletId="{{bracelet.id}}"></disqus>
       </div>
     </div>
   </div>`

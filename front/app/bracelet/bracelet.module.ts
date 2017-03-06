@@ -14,6 +14,7 @@ import { PreviewBraceletComponent }   from './directives/preview.bracelet.direct
 import { BraceletComponent } from './directives/bracelet.directive';
 import { DisqusComponent } from './directives/disqus.directive';
 import { UsersBraceletComponent } from './users-bracelet.bracelet.component';
+import { DisqusModule } from 'angular2-disqus';
 @NgModule({
   imports: [
     BrowserModule,
@@ -36,6 +37,7 @@ import { UsersBraceletComponent } from './users-bracelet.bracelet.component';
       }
     ]),
     HttpModule,
+    DisqusModule,
     CommonsModule
   ],
   declarations: [
