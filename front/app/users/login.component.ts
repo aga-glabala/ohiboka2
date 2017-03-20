@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import {Router} from '@angular/router';
 
 declare const FB:any;
 
@@ -17,6 +18,9 @@ declare const FB:any;
     <div class="col-md-6">
       <h2>Logowanie</h2>
       <form (submit)="login(loginEmail.value, loginPassword.value)">
+          <div *ngIf="loginError" class="alert alert-danger">
+            {{loginError}}
+          </div>
           <div class="form-group">
               <label for="login-email">Email</label>
               <input type="text" id="login-email" class="form-control" name="email" #loginEmail>
@@ -32,6 +36,9 @@ declare const FB:any;
     <div class="col-md-6">
       <h2>Rejestracja</h2>
       <form (submit)="register(registerEmail.value, registerPassword.value,registerPassword2.value)">
+        <div *ngIf="registerError" class="alert alert-danger">
+          {{ registerError }}
+        </div>
         <div class="form-group">
             <label for="register-email">Email</label>
             <input type="text" class="form-control" name="email" #registerEmail id="register-email">
@@ -52,25 +59,44 @@ declare const FB:any;
   `
 })
 export class LoginComponent {
-    constructor(public AuthService : AuthService) {
+    constructor(public AuthService : AuthService, private router: Router) {
     }
+    loginError = false;
+    registerError = false;
 
     onFacebookLoginClick() {
-      this.AuthService.loginFB();
+      this.AuthService.loginFB().subscribe(
+        (data) => {
+          this.router.navigate(['/bracelets/index']);
+        },
+        (error) => {
+          this.loginError = error.error.message;
+        }
+      );
     }
 
     login(login, password) {
       this.AuthService.login(login, password).subscribe(
         (data) => {
+          this.router.navigate(['/bracelets/index']);
+        },
+        (error) => {
+          this.loginError = error.error.message;
         }
-      );
+      )
     }
 
     register(login, password, password2) {
-      console.log(login, password, password2);
+      //if(password !== password2) {
+      //  this.registerErrors['wrong-passwords'] = 'Passwords do not match';
+      //  return false;
+      //}
       this.AuthService.register(login, password, password2).subscribe(
         (data) => {
-          console.log(data);
+          this.router.navigate(['/bracelets/index']);
+        },
+        (error) => {
+          this.registerError = error.error.message;
         }
       );
     }

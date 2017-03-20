@@ -17,15 +17,15 @@ export class UserService {
       User.findOne({ 'email' :  req.body.email }, function(err, user) {
         // if there are any errors, return the error before anything else
         if (err)
-          return res.json({ action: 'login', status: 0, user: null,error: err});
+          return res.status(401).json({ action: 'login', status: 0, user: null,error: err});
 
         // if no user is found, return the message
         if (!user)
-          return res.json({ action: 'login', status: 0, user: null, error: {message: 'No user found.'}});
+          return res.status(401).json({ action: 'login', status: 0, user: null, error: {message: 'Password or email is incorrect'}});
 
         // if the user is found but the password is wrong
         if (!user.validPassword(req.body.password))
-          return res.json({ action: 'login', status: 0, user: null, error: {message: 'Oops! Wrong password.'}});
+          return res.status(401).json({ action: 'login', status: 0, user: null, error: {message: 'Password or email is incorrect'}});
 
         // all is well, return successful user
         return res.json({ action: 'login', status: 1, user: user, token: that.getToken(user)});
@@ -36,14 +36,18 @@ export class UserService {
   registerLocal() {
     let that = this;
     return function(req, res) {
+      if(req.body.password !== req.body.password2) {
+        return res.status(401).json({ action: 'register', status: 0, user: null, error: {message: 'Passwords do not match.'}});
+      }
+
       User.findOne({ 'email' :  req.body.email }, function(err, user) {
         // if there are any errors, return the error
         if (err)
-          return res.json({ action: 'register', status: 0, user: null, error: err});
+          return res.status(401).json({ action: 'register', status: 0, user: null, error: err});
 
         // check to see if theres already a user with that email
         if (user) {
-          return res.json({ action: 'register', status: 0, user: null, error: {message: 'That email is already taken.'}});
+          return res.status(401).json({ action: 'register', status: 0, user: null, error: {message: 'That email is already taken.'}});
         } else {
 
           // if there is no user with that email

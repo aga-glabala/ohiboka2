@@ -1,10 +1,11 @@
 import { Injectable }     from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/map';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CookieService } from 'angular2-cookie/core';
 import { User } from './user.model';
 import {AppService} from '../app.service';
+import {Observable} from "rxjs";
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
 
 declare const FB:any;
 
@@ -39,6 +40,9 @@ export class AuthService {
                         let response = data.json();
                         return { status: 0, user: null, message: response.message };
                       }
+                    })
+                    .catch((error: Response | any) => {
+                      return Observable.throw(error.json());
                     });
   }
 
@@ -58,6 +62,10 @@ export class AuthService {
                         let response = data.json();
                         return { status: 0, user: null, message: response.message };
                       }
+                    })
+                    .catch((error: Response | any) => {
+                      console.log(error);
+                      return Observable.throw(error.json());
                     });
   }
 
@@ -106,18 +114,26 @@ export class AuthService {
 
   public loginFB() {
     let that = this;
+    let observer = new BehaviorSubject(undefined);
     FB.login(function(response) {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
       that.http.post(AppService.API + "users/facebooklogin",response.authResponse,options)
-                    .subscribe((data) => {
-                      let response = data.json();
-                      let user = new User(response.user.name, response.user.email);
-                      let token = response.token;
-                      that._login(token, user);
-                    });
+          .catch((error: Response | any) => {
+            console.log(error);
+            return Observable.throw(error.json());
+          })
+          .subscribe((data) => {
+            let response = data.json();
+            let user = new User(response.user.name, response.user.email);
+            let token = response.token;
+            that._login(token, user);
+            observer.next(data);
+          });
     },{
       scope: 'email'
     });
+
+    return observer;
   }
 }
